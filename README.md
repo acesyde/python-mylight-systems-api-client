@@ -55,10 +55,12 @@ You need at least:
 
 -   Python 3.11+
 -   [Poetry][poetry-install]
+-   NodeJS 20+
 
 To install all packages, including all development requirements:
 
 ```bash
+npm install
 poetry install
 ```
 
