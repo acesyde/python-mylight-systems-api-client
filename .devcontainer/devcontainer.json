@@ -17,33 +17,11 @@
                 "EditorConfig.EditorConfig",
                 "esbenp.prettier-vscode",
                 "tamasfe.even-better-toml"
-            ],
-            "settings": {
-                "editor.formatOnPaste": false,
-                "editor.formatOnSave": true,
-                "editor.formatOnType": true,
-                "files.trimTrailingWhitespace": true,
-                "terminal.integrated.profiles.linux": {
-                    "zsh": {
-                        "path": "/usr/bin/zsh"
-                    }
-                },
-                "terminal.integrated.defaultProfile.linux": "zsh",
-                "editor.defaultFormatter": "esbenp.prettier-vscode",
-                "python.testing.unittestEnabled": false,
-                "python.testing.pytestEnabled": true,
-                "python.testing.pytestArgs": ["tests"],
-                "[python]": {
-                    "editor.defaultFormatter": "charliermarsh.ruff",
-                    "editor.codeActionsOnSave": {
-                        "source.fixAll": "explicit",
-                        "source.organizeImports": "explicit"
-                    }
-                }
-            }
+            ]
         }
     },
     "containerEnv": {
-        "POETRY_VIRTUALENVS_IN_PROJECT": "true"
+        "POETRY_VIRTUALENVS_IN_PROJECT": "true",
+        "PYTHONASYNCIODEBUG": "1"
     }
 }

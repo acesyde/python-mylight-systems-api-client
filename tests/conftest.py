@@ -7,14 +7,14 @@ from aioresponses import aioresponses
 import pytest
 
 from mylightsystems import MyLightSystemsApiClient
-from tests.const import MOCK_HOST
+from tests.const import MOCK_URL
 
 
 @pytest.fixture
 async def client() -> AsyncGenerator[MyLightSystemsApiClient, None]:
     """Return a MyLightSustems client."""
     async with aiohttp.ClientSession() as session, MyLightSystemsApiClient(
-        MOCK_HOST,
+        MOCK_URL,
         session=session,
     ) as mylightsystems_client:
         yield mylightsystems_client

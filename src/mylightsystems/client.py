@@ -3,9 +3,9 @@
 from __future__ import annotations
 
 import asyncio
+from dataclasses import dataclass
 import logging
 import socket
-from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any
 
 from aiohttp import ClientError, ClientResponseError, ClientSession
@@ -13,9 +13,11 @@ from aiohttp.hdrs import METH_GET
 from yarl import URL
 
 from mylightsystems.const import AUTH_URL, DEFAULT_BASE_URL, PROFILE_URL
-from mylightsystems.exceptions import (MyLightSystemsConnectionError,
-                                       MyLightSystemsInvalidAuthError,
-                                       MyLightSystemsUnauthorizedError)
+from mylightsystems.exceptions import (
+    MyLightSystemsConnectionError,
+    MyLightSystemsInvalidAuthError,
+    MyLightSystemsUnauthorizedError,
+)
 from mylightsystems.models import Login, Profile
 
 if TYPE_CHECKING:
@@ -28,7 +30,7 @@ _LOGGER = logging.getLogger(__name__)
 class MyLightSystemsApiClient:
     """Main class for handling communication with MyLightSystems API."""
 
-    host: str = DEFAULT_BASE_URL
+    base_url: str = DEFAULT_BASE_URL
     session: ClientSession | None = None
     request_timeout: int = 10
     _close_session: bool = False
@@ -41,7 +43,7 @@ class MyLightSystemsApiClient:
         params: dict[str, Any] | None = None,
     ) -> Any:
         """Handle a request to the MyLightSystems API."""
-        url = URL.build(scheme="https", host=self.host).with_path(uri)
+        url = URL(self.base_url).with_path(uri)
 
         headers = {
             "Content-Type": "application/json",

@@ -1,3 +1,3 @@
-MOCK_HOST = "mylightsystems.local"
+MOCK_HOST = "192.168.0.30"
 
-MOCK_URL = f"https://{MOCK_HOST}"
+MOCK_URL = f"http://{MOCK_HOST}"

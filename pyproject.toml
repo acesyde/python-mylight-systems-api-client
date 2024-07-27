@@ -51,6 +51,7 @@ Changelog = "https://github.com/acesyde/python-mylight-systems-api-client/releas
 
 [tool.coverage.report]
 show_missing = true
+fail_under = 80
 
 [tool.coverage.run]
 plugins = ["covdefaults"]
