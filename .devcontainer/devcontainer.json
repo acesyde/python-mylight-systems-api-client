@@ -13,11 +13,9 @@
                 "ms-python.vscode-pylance",
                 "visualstudioexptteam.vscodeintellicode",
                 "redhat.vscode-yaml",
-                "esbenp.prettier-vscode",
                 "GitHub.vscode-pull-request-github",
                 "EditorConfig.EditorConfig",
                 "esbenp.prettier-vscode",
-                "ms-python.python",
                 "tamasfe.even-better-toml"
             ],
             "settings": {
@@ -32,10 +30,20 @@
                 },
                 "terminal.integrated.defaultProfile.linux": "zsh",
                 "editor.defaultFormatter": "esbenp.prettier-vscode",
+                "python.testing.unittestEnabled": false,
+                "python.testing.pytestEnabled": true,
+                "python.testing.pytestArgs": ["tests"],
                 "[python]": {
-                    "editor.defaultFormatter": "charliermarsh.ruff"
+                    "editor.defaultFormatter": "charliermarsh.ruff",
+                    "editor.codeActionsOnSave": {
+                        "source.fixAll": "explicit",
+                        "source.organizeImports": "explicit"
+                    }
                 }
             }
         }
+    },
+    "containerEnv": {
+        "POETRY_VIRTUALENVS_IN_PROJECT": "true"
     }
 }

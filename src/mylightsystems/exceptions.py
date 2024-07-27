@@ -7,3 +7,11 @@ class MyLightSystemsError(Exception):
 
 class MyLightSystemsConnectionError(MyLightSystemsError):
     """Connection error."""
+
+
+class MyLightSystemsInvalidAuthError(MyLightSystemsError):
+    """Invalid authentication error."""
+
+
+class MyLightSystemsUnauthorizedError(MyLightSystemsError):
+    """Unauthorized error."""
