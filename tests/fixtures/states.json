@@ -1,0 +1,247 @@
+{
+    "status": "ok",
+    "deviceStates": [
+        {
+            "deviceId": "F7DFE301A82C",
+            "effectiveReportPeriod": 150,
+            "state": "off",
+            "sensorStates": [
+                {
+                    "sensorId": "F7DFE301A82C-pow",
+                    "measure": {
+                        "value": 0.0,
+                        "type": "electric_power",
+                        "unit": "watt",
+                        "date": "2024-07-28 18:03:14"
+                    }
+                }
+            ],
+            "actuatorStates": [
+                {
+                    "actuatorId": "F7DFE301A82C-sw",
+                    "state": {
+                        "is_on": false
+                    }
+                }
+            ]
+        },
+        {
+            "deviceId": "xRqpTvwC2GAO9gwo",
+            "effectiveReportPeriod": 150,
+            "state": "on",
+            "sensorStates": [
+                {
+                    "sensorId": "xRqpTvwC2GAO9gwo-pow",
+                    "measure": {
+                        "value": -137.46,
+                        "type": "electric_power",
+                        "unit": "watt",
+                        "date": "2024-07-28 18:03:14"
+                    }
+                }
+            ],
+            "actuatorStates": []
+        },
+        {
+            "deviceId": "8ZH2E4B3yU5SDnMH",
+            "effectiveReportPeriod": 150,
+            "state": "on",
+            "sensorStates": [
+                {
+                    "sensorId": "8ZH2E4B3yU5SDnMH-pow",
+                    "measure": {
+                        "value": 1082.2,
+                        "type": "electric_power",
+                        "unit": "watt",
+                        "date": "2024-07-28 18:03:14"
+                    }
+                }
+            ],
+            "actuatorStates": []
+        },
+        {
+            "deviceId": "NK32Y2D2IBlxcXF6",
+            "effectiveReportPeriod": 150,
+            "state": "on",
+            "sensorStates": [
+                {
+                    "sensorId": "NK32Y2D2IBlxcXF6-pow",
+                    "measure": {
+                        "value": 0.0,
+                        "type": "electric_power",
+                        "unit": "watt",
+                        "date": "2024-07-28 18:03:14"
+                    }
+                }
+            ],
+            "actuatorStates": []
+        },
+        {
+            "deviceId": "F81FE401A81C",
+            "effectiveReportPeriod": 300,
+            "state": "on",
+            "sensorStates": [
+                {
+                    "sensorId": "F81FE401A81C-pow_1",
+                    "measure": {
+                        "value": -137.46,
+                        "type": "electric_power",
+                        "unit": "watt",
+                        "date": "2024-07-28 18:03:14"
+                    }
+                },
+                {
+                    "sensorId": "F81FE401A81C-pow_2",
+                    "measure": {
+                        "value": 0.0,
+                        "type": "electric_power",
+                        "unit": "watt",
+                        "date": "2024-07-28 18:03:14"
+                    }
+                },
+                {
+                    "sensorId": "F81FE401A81C-pow_3",
+                    "measure": {
+                        "value": 1082.2,
+                        "type": "electric_power",
+                        "unit": "watt",
+                        "date": "2024-07-28 18:03:14"
+                    }
+                }
+            ],
+            "actuatorStates": []
+        },
+        {
+            "deviceId": "F8DFE208A81C",
+            "effectiveReportPeriod": 150,
+            "localBufferRecovery": false,
+            "reportPeriod": 300,
+            "state": "on",
+            "sensorStates": [
+                {
+                    "sensorId": "F8DFE208A81C-pow",
+                    "measure": {
+                        "value": 0.0,
+                        "type": "electric_power",
+                        "unit": "watt",
+                        "date": "2024-07-28 18:03:14"
+                    }
+                }
+            ],
+            "actuatorStates": []
+        },
+        {
+            "deviceId": "I8jiM4ClaJgYfkZX",
+            "effectiveReportPeriod": 300,
+            "state": "on",
+            "consumptionUpToDate": true,
+            "productionUpToDate": true,
+            "sensorStates": [
+                {
+                    "sensorId": "I8jiM4ClaJgYfkZX-produced_energy",
+                    "measure": {
+                        "value": 337770.0,
+                        "type": "produced_energy",
+                        "unit": "Ws",
+                        "date": "2024-07-28 18:00:00"
+                    }
+                },
+                {
+                    "sensorId": "I8jiM4ClaJgYfkZX-electricity_meter_energy",
+                    "measure": {
+                        "value": -61923.6,
+                        "type": "electricity_meter_energy",
+                        "unit": "Ws",
+                        "date": "2024-07-28 18:00:00"
+                    }
+                },
+                {
+                    "sensorId": "I8jiM4ClaJgYfkZX-total_energy",
+                    "measure": {
+                        "value": 275846.4,
+                        "type": "total_energy",
+                        "unit": "Ws",
+                        "date": "2024-07-28 18:00:00"
+                    }
+                },
+                {
+                    "sensorId": "I8jiM4ClaJgYfkZX-green_energy",
+                    "measure": {
+                        "value": 275846.4,
+                        "type": "green_energy",
+                        "unit": "Ws",
+                        "date": "2024-07-28 18:00:00"
+                    }
+                },
+                {
+                    "sensorId": "I8jiM4ClaJgYfkZX-grid_energy",
+                    "measure": {
+                        "value": 0.0,
+                        "type": "grid_energy",
+                        "unit": "Ws",
+                        "date": "2024-07-28 18:00:00"
+                    }
+                },
+                {
+                    "sensorId": "I8jiM4ClaJgYfkZX-autonomy_rate",
+                    "measure": {
+                        "value": 100.0,
+                        "date": "2024-07-28 18:00:00"
+                    }
+                },
+                {
+                    "sensorId": "I8jiM4ClaJgYfkZX-selfconso",
+                    "measure": {
+                        "value": 100.0,
+                        "date": "2024-07-28 18:00:00"
+                    }
+                }
+            ],
+            "actuatorStates": []
+        },
+        {
+            "deviceId": "31oXYqq7nM8R9zFU_msb",
+            "effectiveReportPeriod": 300,
+            "state": "on",
+            "sensorStates": [
+                {
+                    "sensorId": "31oXYqq7nM8R9zFU_msb-charge_energy",
+                    "measure": {
+                        "value": 61923.6,
+                        "type": "charge_energy",
+                        "unit": "Ws",
+                        "date": "2024-07-28 18:00:00"
+                    }
+                },
+                {
+                    "sensorId": "31oXYqq7nM8R9zFU_msb-discharge_energy",
+                    "measure": {
+                        "value": 0.0,
+                        "type": "discharge_energy",
+                        "unit": "Ws",
+                        "date": "2024-07-28 18:00:00"
+                    }
+                },
+                {
+                    "sensorId": "31oXYqq7nM8R9zFU_msb-loss_energy",
+                    "measure": {
+                        "value": 0.0,
+                        "type": "loss_energy",
+                        "unit": "Ws",
+                        "date": "2024-07-28 18:00:00"
+                    }
+                },
+                {
+                    "sensorId": "31oXYqq7nM8R9zFU_msb-soc",
+                    "measure": {
+                        "value": 3.7456318800000034e7,
+                        "type": "soc",
+                        "unit": "Ws",
+                        "date": "2024-07-28 18:00:00"
+                    }
+                }
+            ],
+            "actuatorStates": []
+        }
+    ]
+}

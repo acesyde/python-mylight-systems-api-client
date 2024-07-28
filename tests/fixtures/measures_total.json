@@ -1,0 +1,17 @@
+{
+    "status": "ok",
+    "measure": {
+        "values": [
+            {
+                "type": "power",
+                "value": 9.727720727799994e7,
+                "unit": "W"
+            },
+            {
+                "type": "energy",
+                "value": 2.8583960976390007e10,
+                "unit": "Ws"
+            }
+        ]
+    }
+}

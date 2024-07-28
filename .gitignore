@@ -95,7 +95,9 @@ ENV/
 .ruff_cache
 
 # Visual Studio Code
-.vscode
+.vscode/*
+!.vscode/launch.json
+!.vscode/settings.json
 
 # IntelliJ Idea family of suites
 .idea

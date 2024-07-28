@@ -13,29 +13,15 @@
                 "ms-python.vscode-pylance",
                 "visualstudioexptteam.vscodeintellicode",
                 "redhat.vscode-yaml",
-                "esbenp.prettier-vscode",
                 "GitHub.vscode-pull-request-github",
                 "EditorConfig.EditorConfig",
                 "esbenp.prettier-vscode",
-                "ms-python.python",
                 "tamasfe.even-better-toml"
-            ],
-            "settings": {
-                "editor.formatOnPaste": false,
-                "editor.formatOnSave": true,
-                "editor.formatOnType": true,
-                "files.trimTrailingWhitespace": true,
-                "terminal.integrated.profiles.linux": {
-                    "zsh": {
-                        "path": "/usr/bin/zsh"
-                    }
-                },
-                "terminal.integrated.defaultProfile.linux": "zsh",
-                "editor.defaultFormatter": "esbenp.prettier-vscode",
-                "[python]": {
-                    "editor.defaultFormatter": "charliermarsh.ruff"
-                }
-            }
+            ]
         }
+    },
+    "containerEnv": {
+        "POETRY_VIRTUALENVS_IN_PROJECT": "true",
+        "PYTHONASYNCIODEBUG": "1"
     }
 }
