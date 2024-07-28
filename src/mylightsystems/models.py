@@ -120,3 +120,10 @@ class DeviceState:
     report_period: int
     state: bool
     sensor_states: list[SensorState]
+
+
+@dataclass
+class SwitchState:
+    """Represent the state of the switch."""
+
+    state: bool

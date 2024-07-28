@@ -19,13 +19,16 @@ from mylightsystems.const import (
     MEASURES_TOTAL_URL,
     PROFILE_URL,
     STATES_URL,
+    SWITCH_URL,
 )
 from mylightsystems.device_factory import DeviceFactory
 from mylightsystems.exceptions import (
     MyLightSystemsConnectionError,
     MyLightSystemsInvalidAuthError,
     MyLightSystemsMeasuresTotalNotSupportedError,
+    MyLightSystemsSwitchNotAllowedError,
     MyLightSystemsUnauthorizedError,
+    MyLightSystemsUnknownDeviceError,
 )
 from mylightsystems.models import (
     Auth,
@@ -35,6 +38,7 @@ from mylightsystems.models import (
     Profile,
     SensorMeasure,
     SensorState,
+    SwitchState,
 )
 
 if TYPE_CHECKING:
@@ -144,7 +148,7 @@ class MyLightSystemsApiClient:
     async def get_measures_total(
         self, auth_token: str, device_id: str
     ) -> list[Measure]:
-        """Get user profile."""
+        """Get measures total."""
         response = await self._request(
             MEASURES_TOTAL_URL,
             params={"authToken": auth_token, "device_id": device_id},
@@ -162,7 +166,7 @@ class MyLightSystemsApiClient:
         ]
 
     async def get_states(self, auth_token: str) -> list[DeviceState]:
-        """Get user profile."""
+        """Get states."""
         response = await self._request(
             STATES_URL,
             params={"authToken": auth_token},
@@ -188,6 +192,21 @@ class MyLightSystemsApiClient:
             )
             for device_state in response["deviceStates"]
         ]
+
+    async def switch(self, auth_token: str, device_id: str, value: bool) -> SwitchState:  # noqa: FBT001
+        """Change switch state."""
+        response = await self._request(
+            SWITCH_URL,
+            params={"authToken": auth_token, "id": device_id, "on": str(value).lower()},
+        )
+
+        if response["status"] == "error":
+            if response["error"] == "switch.not.allowed":
+                raise MyLightSystemsSwitchNotAllowedError
+            if response["error"] == "device.not.found":
+                raise MyLightSystemsUnknownDeviceError
+
+        return SwitchState(state=response["state"] == "on")
 
     async def close(self) -> None:
         """Close open client session."""

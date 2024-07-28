@@ -23,3 +23,7 @@ class MyLightSystemsUnknownDeviceError(MyLightSystemsError):
 
 class MyLightSystemsMeasuresTotalNotSupportedError(MyLightSystemsError):
     """Device doesn't support measures total error."""
+
+
+class MyLightSystemsSwitchNotAllowedError(MyLightSystemsError):
+    """Switch not allowed error."""
