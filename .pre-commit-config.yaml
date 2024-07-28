@@ -71,6 +71,8 @@ repos:
         language: system
         types: [text]
         exclude: ^poetry\.lock$
+        exclude_types:
+          - json
         entry: poetry run codespell
         args:
           - --ignore-words-list=activite

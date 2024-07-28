@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import fields
+import dataclasses
 from typing import Any
 
 from mylightsystems.exceptions import MyLightSystemsUnknownDeviceError
@@ -34,12 +34,12 @@ device_property_mapping: dict[str, str] = {
 }
 
 
-class DeviceFactory:
+class DeviceFactory:  # pylint: disable=too-few-public-methods
     """Device factory."""
 
     def __init__(self) -> None:
         """Device factory initializer."""
-        self.type_mapping = {
+        self.type_mapping: dict[str, type[Device]] = {
             "bat": BatteryDevice,
             "sw": RelayDevice,
             "cmp": CounterDevice,
@@ -54,8 +54,9 @@ class DeviceFactory:
             "reportPeriod": "report_period",
             "batteryCapacity": "capacity",
         }
-        self.value_transformers = {
+        self.value_transformers: dict[str, Any] = {
             "state": lambda x: x.lower() == "on",
+            "children": lambda x: {item["mac"]: item["phase"] for item in x},
         }
 
     def create_device(self, data: dict[str, Any]) -> Device:
@@ -67,7 +68,7 @@ class DeviceFactory:
             raise MyLightSystemsUnknownDeviceError(device_type)
 
         # Get the fields of the device class
-        class_fields = {field.name for field in fields(device_class)}
+        class_fields = {field.name for field in dataclasses.fields(device_class)}
 
         # Create a dictionary with only the relevant fields
         device_data = {}
@@ -76,7 +77,7 @@ class DeviceFactory:
             if class_field in class_fields:
                 # Apply value transformation if needed
                 if class_field in self.value_transformers:
-                    value = self.value_transformers[class_field](value)
+                    value = self.value_transformers[class_field](value)  # noqa: PLW2901
                 device_data[class_field] = value
 
         return device_class(**device_data)
