@@ -20,7 +20,7 @@ _MEASURES_TOTAL_URL = f"{MOCK_URL}/api/measures/total"
     "status",
     [400, 404, 500],
 )
-async def test_get_measures_totalreturn_non_2xx_status_code_raise_error(
+async def test_get_measures_total_return_non_2xx_status_code_raise_error(
     responses: aioresponses,
     client: MyLightSystemsApiClient,
     status: int,
@@ -64,7 +64,7 @@ async def test_get_measures_total_with_unsupported_device_raise_error(
         await client.get_measures_total(auth_token="fake-token", device_id="a")
 
 
-async def test_get_measures_totalsuccess_return_measures(
+async def test_get_measures_total_success_return_measures(
     responses: aioresponses,
     client: MyLightSystemsApiClient,
 ) -> None:

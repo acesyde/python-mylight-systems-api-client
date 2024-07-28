@@ -3,6 +3,10 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from datetime import datetime
 
 
 @dataclass
@@ -83,8 +87,36 @@ class MasterDevice(Device):
 
 @dataclass
 class Measure:
-    """Represent a mesaure."""
+    """Represent a measure."""
 
     type: str
     value: float
     unit: str
+
+
+@dataclass
+class SensorMeasure:
+    """Represent a sensor measure."""
+
+    type: str | None
+    value: float
+    unit: str | None
+    date: datetime
+
+
+@dataclass
+class SensorState:
+    """Represent a sensor state."""
+
+    sensor_id: str
+    measure: SensorMeasure
+
+
+@dataclass
+class DeviceState:
+    """Represent a device state."""
+
+    device_id: str
+    report_period: int
+    state: bool
+    sensor_states: list[SensorState]

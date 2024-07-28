@@ -18,6 +18,7 @@ from mylightsystems.const import (
     DEVICES_URL,
     MEASURES_TOTAL_URL,
     PROFILE_URL,
+    STATES_URL,
 )
 from mylightsystems.device_factory import DeviceFactory
 from mylightsystems.exceptions import (
@@ -26,7 +27,15 @@ from mylightsystems.exceptions import (
     MyLightSystemsMeasuresTotalNotSupportedError,
     MyLightSystemsUnauthorizedError,
 )
-from mylightsystems.models import Auth, Device, Measure, Profile
+from mylightsystems.models import (
+    Auth,
+    Device,
+    DeviceState,
+    Measure,
+    Profile,
+    SensorMeasure,
+    SensorState,
+)
 
 if TYPE_CHECKING:
     from typing_extensions import Self
@@ -150,6 +159,34 @@ class MyLightSystemsApiClient:
         return [
             Measure(type=measure["type"], unit=measure["unit"], value=measure["value"])
             for measure in response["measure"]["values"]
+        ]
+
+    async def get_states(self, auth_token: str) -> list[DeviceState]:
+        """Get user profile."""
+        response = await self._request(
+            STATES_URL,
+            params={"authToken": auth_token},
+        )
+
+        return [
+            DeviceState(
+                device_id=device_state["deviceId"],
+                report_period=device_state["effectiveReportPeriod"],
+                sensor_states=[
+                    SensorState(
+                        sensor_id=sensor_state["sensorId"],
+                        measure=SensorMeasure(
+                            value=sensor_state["measure"]["value"],
+                            type=sensor_state["measure"].get("type", None),
+                            unit=sensor_state["measure"].get("unit", None),
+                            date=sensor_state["measure"]["date"],
+                        ),
+                    )
+                    for sensor_state in device_state["sensorStates"]
+                ],
+                state=device_state["state"].lower() == "on",
+            )
+            for device_state in response["deviceStates"]
         ]
 
     async def close(self) -> None:
