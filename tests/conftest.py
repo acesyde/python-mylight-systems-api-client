@@ -1,4 +1,4 @@
-"""Asynchronous Python client for AirGradient."""
+"""Asynchronous Python client for MyLightSystems."""
 
 from typing import AsyncGenerator, Generator
 

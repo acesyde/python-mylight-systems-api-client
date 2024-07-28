@@ -1,6 +1,6 @@
 """Tests for the login."""
 
-import aioresponses
+from aioresponses import aioresponses
 import pytest
 
 from mylightsystems import (
@@ -29,7 +29,7 @@ async def test_login_return_non_2xx_status_code_raise_error(
         status=status,
     )
     with pytest.raises(MyLightSystemsError):
-        await client.login(email="fake", password="fake")
+        await client.auth(email="fake", password="fake")
 
 
 async def test_login_with_bad_credentials_raise_error(
@@ -47,7 +47,7 @@ async def test_login_with_bad_credentials_raise_error(
     )
 
     with pytest.raises(MyLightSystemsInvalidAuthError):
-        await client.login(email=email, password=password)
+        await client.auth(email=email, password=password)
 
 
 async def test_login_success_return_token(
@@ -63,6 +63,6 @@ async def test_login_success_return_token(
         status=200,
         body=load_fixture("login_success.json"),
     )
-    response = await client.login(email=email, password=password)
+    response = await client.auth(email=email, password=password)
     assert response is not None
     assert response.token == "fake_auth_token"

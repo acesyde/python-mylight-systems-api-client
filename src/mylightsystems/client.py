@@ -12,13 +12,14 @@ from aiohttp import ClientError, ClientResponseError, ClientSession
 from aiohttp.hdrs import METH_GET
 from yarl import URL
 
-from mylightsystems.const import AUTH_URL, DEFAULT_BASE_URL, PROFILE_URL
+from mylightsystems.const import AUTH_URL, DEFAULT_BASE_URL, DEVICES_URL, PROFILE_URL
+from mylightsystems.device_factory import DeviceFactory
 from mylightsystems.exceptions import (
     MyLightSystemsConnectionError,
     MyLightSystemsInvalidAuthError,
     MyLightSystemsUnauthorizedError,
 )
-from mylightsystems.models import Login, Profile
+from mylightsystems.models import Auth, Device, Profile
 
 if TYPE_CHECKING:
     from typing_extensions import Self
@@ -86,7 +87,7 @@ class MyLightSystemsApiClient:
             msg = "Error occurred while communicating with the device"
             raise MyLightSystemsConnectionError(msg) from exception
 
-    async def login(self, email: str, password: str) -> Login:
+    async def auth(self, email: str, password: str) -> Auth:
         """Login to MyLightSystems API."""
         response = await self._request(
             AUTH_URL,
@@ -100,7 +101,7 @@ class MyLightSystemsApiClient:
         ):
             raise MyLightSystemsInvalidAuthError
 
-        return Login(token=response["authToken"])
+        return Auth(token=response["authToken"])
 
     async def get_profile(self, auth_token: str) -> Profile:
         """Get user profile."""
@@ -110,6 +111,19 @@ class MyLightSystemsApiClient:
         )
 
         return Profile(id=response["id"], grid_type=response["gridType"])
+
+    async def get_devices(self, auth_token: str) -> list[Device]:
+        """Get devices."""
+        response = await self._request(
+            DEVICES_URL,
+            params={"authToken": auth_token},
+        )
+
+        device_factory = DeviceFactory()
+
+        return [
+            device_factory.create_device(data=device) for device in response["devices"]
+        ]
 
     async def close(self) -> None:
         """Close open client session."""

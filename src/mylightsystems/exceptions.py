@@ -15,3 +15,7 @@ class MyLightSystemsInvalidAuthError(MyLightSystemsError):
 
 class MyLightSystemsUnauthorizedError(MyLightSystemsError):
     """Unauthorized error."""
+
+
+class MyLightSystemsUnknownDeviceError(MyLightSystemsError):
+    """Unknown device error."""

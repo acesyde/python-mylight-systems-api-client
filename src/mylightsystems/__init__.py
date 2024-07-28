@@ -7,7 +7,7 @@ from mylightsystems.exceptions import (
     MyLightSystemsInvalidAuthError,
     MyLightSystemsUnauthorizedError,
 )
-from mylightsystems.models import Login
+from mylightsystems.models import Auth
 
 __all__ = [
     "MyLightSystemsApiClient",
@@ -15,5 +15,5 @@ __all__ = [
     "MyLightSystemsConnectionError",
     "MyLightSystemsInvalidAuthError",
     "MyLightSystemsUnauthorizedError",
-    "Login",
+    "Auth",
 ]
