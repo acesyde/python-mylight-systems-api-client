@@ -63,7 +63,7 @@ source = ["mylightsystems"]
 # results.
 platform = "linux"
 python_version = "3.11"
-
+exclude = ["tests"]
 # show error messages from unrelated files
 follow_imports = "normal"
 
