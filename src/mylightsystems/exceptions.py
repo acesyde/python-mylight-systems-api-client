@@ -19,3 +19,7 @@ class MyLightSystemsUnauthorizedError(MyLightSystemsError):
 
 class MyLightSystemsUnknownDeviceError(MyLightSystemsError):
     """Unknown device error."""
+
+
+class MyLightSystemsMeasuresTotalNotSupportedError(MyLightSystemsError):
+    """Device doesn't support measures total error."""

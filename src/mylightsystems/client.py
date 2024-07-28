@@ -12,14 +12,21 @@ from aiohttp import ClientError, ClientResponseError, ClientSession
 from aiohttp.hdrs import METH_GET
 from yarl import URL
 
-from mylightsystems.const import AUTH_URL, DEFAULT_BASE_URL, DEVICES_URL, PROFILE_URL
+from mylightsystems.const import (
+    AUTH_URL,
+    DEFAULT_BASE_URL,
+    DEVICES_URL,
+    MEASURES_TOTAL_URL,
+    PROFILE_URL,
+)
 from mylightsystems.device_factory import DeviceFactory
 from mylightsystems.exceptions import (
     MyLightSystemsConnectionError,
     MyLightSystemsInvalidAuthError,
+    MyLightSystemsMeasuresTotalNotSupportedError,
     MyLightSystemsUnauthorizedError,
 )
-from mylightsystems.models import Auth, Device, Profile
+from mylightsystems.models import Auth, Device, Measure, Profile
 
 if TYPE_CHECKING:
     from typing_extensions import Self
@@ -123,6 +130,26 @@ class MyLightSystemsApiClient:
 
         return [
             device_factory.create_device(data=device) for device in response["devices"]
+        ]
+
+    async def get_measures_total(
+        self, auth_token: str, device_id: str
+    ) -> list[Measure]:
+        """Get user profile."""
+        response = await self._request(
+            MEASURES_TOTAL_URL,
+            params={"authToken": auth_token, "device_id": device_id},
+        )
+
+        if (
+            response["status"] == "error"
+            and response["error"] == "device.not.supports.total.measures"
+        ):
+            raise MyLightSystemsMeasuresTotalNotSupportedError
+
+        return [
+            Measure(type=measure["type"], unit=measure["unit"], value=measure["value"])
+            for measure in response["measure"]["values"]
         ]
 
     async def close(self) -> None:

@@ -79,3 +79,12 @@ class MasterDevice(Device):
 
     state: bool
     report_period: int
+
+
+@dataclass
+class Measure:
+    """Represent a mesaure."""
+
+    type: str
+    value: float
+    unit: str
