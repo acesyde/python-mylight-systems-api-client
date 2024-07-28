@@ -32,7 +32,7 @@ async def test_login_return_non_2xx_status_code_raise_error(
         await client.login(email="fake", password="fake")
 
 
-async def test_login_with_bad_crendeitals_raise_error(
+async def test_login_with_bad_credentials_raise_error(
     responses: aioresponses,
     client: MyLightSystemsApiClient,
 ) -> None:

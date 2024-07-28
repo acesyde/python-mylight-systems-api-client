@@ -5,6 +5,7 @@ from mylightsystems.exceptions import (
     MyLightSystemsConnectionError,
     MyLightSystemsError,
     MyLightSystemsInvalidAuthError,
+    MyLightSystemsUnauthorizedError,
 )
 from mylightsystems.models import Login
 
@@ -13,5 +14,6 @@ __all__ = [
     "MyLightSystemsError",
     "MyLightSystemsConnectionError",
     "MyLightSystemsInvalidAuthError",
+    "MyLightSystemsUnauthorizedError",
     "Login",
 ]
