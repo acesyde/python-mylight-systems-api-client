@@ -23,7 +23,7 @@ classifiers = [
 packages = [{ include = "mylightsystems", from = "src" }]
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.11"
 aiohttp = "^3.0.0"
 yarl = "^1.6.0"
 mashumaro = "^3.11"
