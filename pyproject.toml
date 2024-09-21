@@ -23,7 +23,7 @@ classifiers = [
 packages = [{ include = "mylightsystems", from = "src" }]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.12"
 aiohttp = "^3.0.0"
 yarl = "^1.6.0"
 mashumaro = "^3.11"
@@ -62,7 +62,7 @@ source = ["mylightsystems"]
 # free to run mypy on Windows, Linux, or macOS and get consistent
 # results.
 platform = "linux"
-python_version = "3.11"
+python_version = "3.12"
 # show error messages from unrelated files
 follow_imports = "normal"
 

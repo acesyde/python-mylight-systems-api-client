@@ -23,5 +23,7 @@
     "containerEnv": {
         "POETRY_VIRTUALENVS_IN_PROJECT": "true",
         "PYTHONASYNCIODEBUG": "1"
-    }
+    },
+    "postCreateCommand": ".devcontainer/scripts/postCreate.sh",
+    "postStartCommand": ".devcontainer/scripts/postStart.sh"
 }
