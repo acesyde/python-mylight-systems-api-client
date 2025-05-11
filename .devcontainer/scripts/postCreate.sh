@@ -1,12 +1,26 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 
 #------------------------------
-# PRE COMMIT
+# FUNCTIONS
+#------------------------------
+print_command() {
+    local message=$1
+    local icon=$2
+    echo -e "\e[34m»»» $icon \e[32m$message\e[0m ..."
+}
+
+MISE=$(which mise)
+
+if [ -z "$MISE" ]; then
+  print_command "Mise is not installed. Please install Mise before running this script." "❌"
+  exit 1
+fi
+
+#------------------------------
+# Permissions
 #------------------------------
 
-NAME="Pre Commit"
-
-echo -e "\e[34m»»» 📦 \e[32mInstalling \e[33m$NAME\e[0m ..."
-
-make precommit-install
+print_command "Setting up permissions..." "🔧"
+sudo chown -R vscode:vscode /mnt/mise-data
+print_command "Permissions are set up!" "✅"
