@@ -1,13 +1,13 @@
 {
-    "name": "MyLigh Systems",
-    "image": "mcr.microsoft.com/devcontainers/python:3.12",
+    "name": "MyLight Systems",
+    "image": "mcr.microsoft.com/devcontainers/python:3.13",
     "features": {
-        "ghcr.io/devcontainers-contrib/features/poetry:2": {},
-        "ghcr.io/devcontainers/features/node:1": {}
+        "ghcr.io/devcontainers-extra/features/mise:1": {}
     },
     "customizations": {
         "vscode": {
             "extensions": [
+                "hverlin.mise-vscode",
                 "charliermarsh.ruff",
                 "ms-python.pylint",
                 "ms-python.vscode-pylance",

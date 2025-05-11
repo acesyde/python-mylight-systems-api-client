@@ -1,0 +1,12 @@
+[tools]
+node = "22"
+poetry = "2"
+pre-commit = "4.2"
+python = "3.13"
+ruff = "latest"
+
+[settings]
+experimental = true
+
+[env]
+_.python.venv = { path = ".venv", create = true }

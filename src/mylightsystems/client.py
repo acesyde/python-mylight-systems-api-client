@@ -42,7 +42,7 @@ from mylightsystems.models import (
 )
 
 if TYPE_CHECKING:
-    from typing_extensions import Self
+    from typing import Self
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -96,7 +96,7 @@ class MyLightSystemsApiClient:
 
                 return json_response
 
-        except asyncio.TimeoutError as exception:
+        except TimeoutError as exception:
             msg = "Timeout occurred while connecting to the device"
             raise MyLightSystemsConnectionError(msg) from exception
         except (
