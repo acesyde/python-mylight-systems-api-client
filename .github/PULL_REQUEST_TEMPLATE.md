@@ -1,9 +1,11 @@
-# Proposed Changes
+## Description
 
-> (Describe the changes and rationale behind them)
+## Related Issue
 
-## Related Issues
+## Types of changes
 
-> ([Github link][autolink-references] to related issues or pull requests)
-
-[autolink-references]: https://help.github.com/articles/autolinked-references-and-urls/
+- [ ] 🐞 Bug fix (non-breaking change which fixes an issue).
+- [ ] 🚀 New feature (non-breaking change which adds functionality).
+- [ ] 💥 Breaking change (fix or feature that would cause existing functionality to not work as expected).
+- [ ] 📗 Documentation update.
+- [ ] ❓ Other (please describe):

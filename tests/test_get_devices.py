@@ -1,8 +1,7 @@
 """Tests for get devices."""
 
-from aioresponses import aioresponses
 import pytest
-
+from aioresponses import aioresponses
 from mylightsystems import (
     MyLightSystemsApiClient,
     MyLightSystemsError,
@@ -16,6 +15,7 @@ from mylightsystems.models import (
     RelayDevice,
     VirtualDevice,
 )
+
 from tests import load_fixture
 from tests.const import MOCK_URL
 

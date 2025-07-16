@@ -3,9 +3,9 @@
 from __future__ import annotations
 
 import asyncio
-from dataclasses import dataclass
 import logging
 import socket
+from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any
 
 from aiohttp import ClientError, ClientResponseError, ClientSession
@@ -76,22 +76,15 @@ class MyLightSystemsApiClient:
 
         try:
             async with asyncio.timeout(self.request_timeout):
-                response = await self.session.request(
-                    method, url, headers=headers, params=params
-                )
+                response = await self.session.request(method, url, headers=headers, params=params)
 
-                _LOGGER.debug(
-                    "Data retrieved from %s, status: %s", url, response.status
-                )
+                _LOGGER.debug("Data retrieved from %s, status: %s", url, response.status)
 
                 response.raise_for_status()
 
                 json_response = await response.json()
 
-                if (
-                    json_response["status"] == "error"
-                    and json_response["error"] == "not.authorized"
-                ):
+                if json_response["status"] == "error" and json_response["error"] == "not.authorized":
                     raise MyLightSystemsUnauthorizedError
 
                 return json_response
@@ -141,23 +134,16 @@ class MyLightSystemsApiClient:
 
         device_factory = DeviceFactory()
 
-        return [
-            device_factory.create_device(data=device) for device in response["devices"]
-        ]
+        return [device_factory.create_device(data=device) for device in response["devices"]]
 
-    async def get_measures_total(
-        self, auth_token: str, device_id: str
-    ) -> list[Measure]:
+    async def get_measures_total(self, auth_token: str, device_id: str) -> list[Measure]:
         """Get measures total."""
         response = await self._request(
             MEASURES_TOTAL_URL,
             params={"authToken": auth_token, "device_id": device_id},
         )
 
-        if (
-            response["status"] == "error"
-            and response["error"] == "device.not.supports.total.measures"
-        ):
+        if response["status"] == "error" and response["error"] == "device.not.supports.total.measures":
             raise MyLightSystemsMeasuresTotalNotSupportedError
 
         return [

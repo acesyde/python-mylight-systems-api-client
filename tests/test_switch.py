@@ -1,8 +1,7 @@
 """Tests for get profile."""
 
-from aioresponses import aioresponses
 import pytest
-
+from aioresponses import aioresponses
 from mylightsystems import (
     MyLightSystemsApiClient,
     MyLightSystemsError,
@@ -13,6 +12,7 @@ from mylightsystems.exceptions import (
     MyLightSystemsUnknownDeviceError,
 )
 from mylightsystems.models import SwitchState
+
 from tests import load_fixture
 from tests.const import MOCK_URL
 
@@ -92,9 +92,7 @@ async def test_switch_success_return_profile(
         status=200,
         body=load_fixture("switch.json"),
     )
-    response = await client.switch(
-        auth_token="fake-token", device_id="test", value=True
-    )
+    response = await client.switch(auth_token="fake-token", device_id="test", value=True)
     assert response is not None
     assert isinstance(response, SwitchState)
     assert response.state

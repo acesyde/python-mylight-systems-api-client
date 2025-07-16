@@ -1,13 +1,13 @@
 """Tests for get profile."""
 
-from aioresponses import aioresponses
 import pytest
-
+from aioresponses import aioresponses
 from mylightsystems import (
     MyLightSystemsApiClient,
     MyLightSystemsError,
     MyLightSystemsUnauthorizedError,
 )
+
 from tests import load_fixture
 from tests.const import MOCK_URL
 
