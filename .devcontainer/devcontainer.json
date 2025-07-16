@@ -9,9 +9,7 @@
             "extensions": [
                 "hverlin.mise-vscode",
                 "charliermarsh.ruff",
-                "ms-python.pylint",
                 "ms-python.vscode-pylance",
-                "visualstudioexptteam.vscodeintellicode",
                 "redhat.vscode-yaml",
                 "GitHub.vscode-pull-request-github",
                 "EditorConfig.EditorConfig",
@@ -21,7 +19,6 @@
         }
     },
     "containerEnv": {
-        "POETRY_VIRTUALENVS_IN_PROJECT": "true",
         "PYTHONASYNCIODEBUG": "1"
     },
     "postCreateCommand": ".devcontainer/scripts/postCreate.sh",

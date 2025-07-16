@@ -1,8 +1,7 @@
 """Tests for get devices."""
 
-from aioresponses import aioresponses
 import pytest
-
+from aioresponses import aioresponses
 from mylightsystems import (
     MyLightSystemsApiClient,
     MyLightSystemsError,
@@ -16,6 +15,7 @@ from mylightsystems.models import (
     RelayDevice,
     VirtualDevice,
 )
+
 from tests import load_fixture
 from tests.const import MOCK_URL
 
@@ -33,7 +33,7 @@ async def test_get_devices_return_non_2xx_status_code_raise_error(
 ) -> None:
     """Test status call."""
     responses.get(
-        f"{_DEVICE_URL}?authToken=fake-token",
+        str(f"{_DEVICE_URL}?authToken=fake-token"),
         status=status,
     )
     with pytest.raises(MyLightSystemsError):
@@ -46,7 +46,7 @@ async def test_get_devices_with_bad_token_raise_error(
 ) -> None:
     """Test bad token call."""
     responses.get(
-        f"{_DEVICE_URL}?authToken=fake-token",
+        str(f"{_DEVICE_URL}?authToken=fake-token"),
         status=200,
         body=load_fixture("unauthorized.json"),
     )
@@ -61,7 +61,7 @@ async def test_get_devices_success_return_devices(
 ) -> None:
     """Test get profile call."""
     responses.get(
-        f"{_DEVICE_URL}?authToken=fake-token",
+        str(f"{_DEVICE_URL}?authToken=fake-token"),
         status=200,
         body=load_fixture("devices.json"),
     )

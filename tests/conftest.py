@@ -3,10 +3,10 @@
 from collections.abc import AsyncGenerator, Generator
 
 import aiohttp
-from aioresponses import aioresponses
 import pytest
-
+from aioresponses import aioresponses
 from mylightsystems import MyLightSystemsApiClient
+
 from tests.const import MOCK_URL
 
 

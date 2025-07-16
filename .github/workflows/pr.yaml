@@ -1,0 +1,45 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: pr-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  run:
+    name: 🧪 With pytest
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Checkout the repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔍 Mise
+        uses: jdx/mise-action@v2
+        with:
+          version: 2025.7.0
+
+      - name: 🏗 Install dependencies
+        run: mise project:setup
+
+      - name: 🚀 Run tests
+        run: mise project:tests
+
+      - name: 📊 Generate coverage
+        run: mise project:coverage
+
+      - name: 📤 Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          name: pytest
+          fail_ci_if_error: true
+          file: coverage.xml
