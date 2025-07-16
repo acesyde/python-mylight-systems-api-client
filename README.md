@@ -100,8 +100,8 @@ check [the contributor's page][contributors].
 [poetry]: https://python-poetry.org
 [pre-commit]: https://pre-commit.com/
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-stable-green.svg
-[python-versions-shield]: https://img.shields.io/pypi/pyversions/mylightsystems-api-client
+[python-versions-shield]: https://img.shields.io/pypi/pyversions/mylightsystems
 [releases-shield]: https://img.shields.io/github/release/acesyde/python-mylight-systems-api-client.svg
 [releases]: https://github.com/acesyde/python-mylight-systems-api-client/releases
 [semver]: http://semver.org/spec/v2.0.0.html
-[pypi]: https://pypi.org/project/mylightsystems-api-client/
+[pypi]: https://pypi.org/project/mylightsystems/
