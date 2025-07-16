@@ -20,7 +20,7 @@ This source code is based on the [airgradient-python](https://github.com/acesyde
 ## Installation
 
 ```bash
-pip install mylightsystems-api-client
+pip install mylightsystems
 ```
 
 ## Changelog & Releases
@@ -49,33 +49,47 @@ Thank you for being involved! :heart_eyes:
 
 ## Setting up development environment
 
-This Python project is fully managed using the [Poetry][poetry] dependency manager. But also relies on the use of NodeJS for certain checks during development.
+This Python project is fully managed using [mise][mise] for tool management and [uv][uv] for dependency management. It also relies on the use of NodeJS for certain checks during development.
 
 You need at least:
 
--   Python 3.11+
--   [Poetry][poetry-install]
--   NodeJS 20+
+-   [mise][mise-install] (for tool management)
 
-To install all packages, including all development requirements:
+### Using mise (recommended)
+
+To install all tools and set up the project:
 
 ```bash
-npm install
-poetry install
+mise install
+mise run project:setup
 ```
 
-As this repository uses the [pre-commit][pre-commit] framework, all changes
-are linted and tested with each commit. You can run all checks and tests
-manually, using the following command:
+### Development commands
+
+This project uses [ruff][ruff] for linting and formatting. As this repository uses the [pre-commit][pre-commit] framework, all changes are linted and tested with each commit.
+
+You can run all checks and tests manually using mise tasks:
 
 ```bash
-poetry run pre-commit run --all-files
+mise run precommit:run
 ```
 
 To run just the Python tests:
 
 ```bash
-poetry run pytest
+mise run project:tests
+```
+
+To run linting:
+
+```bash
+mise run project:lint
+```
+
+To fix linting issues:
+
+```bash
+mise run project:lint-fix
 ```
 
 ## Authors & contributors
@@ -95,9 +109,12 @@ check [the contributor's page][contributors].
 [acesyde]: https://github.com/acesyde
 [keepchangelog]: http://keepachangelog.com/en/1.0.0/
 [license-shield]: https://img.shields.io/github/license/acesyde/python-mylight-systems-api-client.svg
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2024.svg
-[poetry-install]: https://python-poetry.org/docs/#installation
-[poetry]: https://python-poetry.org
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2025.svg
+[mise]: https://mise.jdx.dev/
+[mise-install]: https://mise.jdx.dev/getting-started.html
+[uv]: https://docs.astral.sh/uv/
+[uv-install]: https://docs.astral.sh/uv/getting-started/installation/
+[ruff]: https://docs.astral.sh/ruff/
 [pre-commit]: https://pre-commit.com/
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-stable-green.svg
 [python-versions-shield]: https://img.shields.io/pypi/pyversions/mylightsystems
