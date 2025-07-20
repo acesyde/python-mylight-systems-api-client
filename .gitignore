@@ -96,8 +96,6 @@ ENV/
 
 # Visual Studio Code
 .vscode/*
-!.vscode/launch.json
-!.vscode/settings.json
 
 # IntelliJ Idea family of suites
 .idea

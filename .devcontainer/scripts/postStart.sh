@@ -32,6 +32,8 @@ print_command "Setting up Mise environment..." "🚀"
 
 $MISE i
 
+mise run apply-shared-tasks
+
 print_command "Mise environment is set up!" "✅"
 
 # Get tools
@@ -50,6 +52,7 @@ print_command "Pre-commit is configured!" "✅"
 #------------------------------
 # CONFIGURE ENV
 #------------------------------
+
 print_command "Configuring environment..." "🔧"
 
 $GIT config --global pull.rebase false

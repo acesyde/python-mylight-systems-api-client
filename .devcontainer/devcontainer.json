@@ -1,26 +1,45 @@
 {
-    "name": "MyLight Systems",
-    "image": "mcr.microsoft.com/devcontainers/python:3.13",
-    "features": {
-        "ghcr.io/devcontainers-extra/features/mise:1": {}
+  "name": "MyLight Systems",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers-extra/features/mise:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "hverlin.mise-vscode",
+        "usernamehw.errorlens",
+        "mads-hartmann.bash-ide-vscode",
+        "github.vscode-github-actions",
+        "DavidAnson.vscode-markdownlint",
+        "redhat.vscode-yaml",
+        "EditorConfig.EditorConfig",
+        "hashicorp.hcl",
+        "fredwangwang.vscode-hcl-format",
+        "charliermarsh.ruff",
+        "fill-labs.dependi",
+        "ms-python.python"
+      ]
+    }
+  },
+  "mounts": [
+    {
+      "source": "mise-data-volume",
+      "target": "/mnt/mise-data",
+      "type": "volume"
     },
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "hverlin.mise-vscode",
-                "charliermarsh.ruff",
-                "ms-python.vscode-pylance",
-                "redhat.vscode-yaml",
-                "GitHub.vscode-pull-request-github",
-                "EditorConfig.EditorConfig",
-                "esbenp.prettier-vscode",
-                "tamasfe.even-better-toml"
-            ]
-        }
-    },
-    "containerEnv": {
-        "PYTHONASYNCIODEBUG": "1"
-    },
-    "postCreateCommand": ".devcontainer/scripts/postCreate.sh",
-    "postStartCommand": ".devcontainer/scripts/postStart.sh"
+    {
+      "source": "${localEnv:HOME}${localEnv:USERPROFILE}/.ssh",
+      "target": "/home/vscode/.ssh",
+      "type": "bind"
+    }
+  ],
+  "containerEnv": {
+    "MISE_DATA_DIR": "/mnt/mise-data"
+  },
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:/mnt/mise-data/shims"
+  },
+  "postCreateCommand": ".devcontainer/scripts/postCreate.sh",
+  "postStartCommand": ".devcontainer/scripts/postStart.sh"
 }
