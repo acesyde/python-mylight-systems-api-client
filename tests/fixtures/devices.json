@@ -2,6 +2,34 @@
     "status": "ok",
     "devices": [
         {
+            "id": "E9C5FA81C75F",
+            "name": "Ordinateur",
+            "type": "eth",
+            "state": "off",
+            "module_number": 0,
+            "unit_electric_capacity": 0,
+            "masterMac": "F8DFE101A81C",
+            "masterType": "mst",
+            "time": "2025-07-14 19:06:01Z",
+            "deviceTypeId": "computer",
+            "typeOverride": null,
+            "preProcessingEpsilon": 0,
+            "deviceTypeName": "Ordinateur",
+            "powerColor": "#39b54a",
+            "power": 0,
+            "programs": {
+                "scheduleEnabled": false,
+                "greenPlayeEnabled": false,
+                "autoOffEnabled": false,
+                "standByEnabled": true
+            },
+            "room": {
+                "id": "9ZrdrIniODxvKecP",
+                "name": "Habitation",
+                "color": "#a1cbe1"
+            }
+        },
+        {
             "id": "4D9F3281C75E",
             "name": "Relais",
             "type": "sw",

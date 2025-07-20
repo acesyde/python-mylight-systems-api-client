@@ -11,6 +11,7 @@ from mylightsystems.models import (
     BatteryDevice,
     CompositeCounterDevice,
     CounterDevice,
+    EthernetDevice,
     MasterDevice,
     RelayDevice,
     VirtualDevice,
@@ -67,9 +68,17 @@ async def test_get_devices_success_return_devices(
     )
     response = await client.get_devices(auth_token="fake-token")
     assert response is not None
-    assert len(response) == 8
+    assert len(response) == 9
 
     device = response[0]
+    assert isinstance(device, EthernetDevice)
+    assert device.id == "E9C5FA81C75F"
+    assert device.name == "Ordinateur"
+    assert device.device_type_name == "Ordinateur"
+    assert device.type == "eth"
+    assert device.master_type == "mst"
+
+    device = response[1]
     assert isinstance(device, RelayDevice)
     assert device.id == "4D9F3281C75E"
     assert device.name == "Relais"
@@ -77,7 +86,7 @@ async def test_get_devices_success_return_devices(
     assert device.master_id == "F8DFE101A81C"
     assert device.master_type == "mst"
 
-    device = response[1]
+    device = response[2]
     assert isinstance(device, CounterDevice)
     assert device.id == "B2F7E9A1C75E"
     assert device.name == "Consommation"
@@ -85,7 +94,7 @@ async def test_get_devices_success_return_devices(
     assert device.master_id == "4D9F3081C75E"
     assert device.master_type == "gmd"
 
-    device = response[4]
+    device = response[5]
     assert isinstance(device, CompositeCounterDevice)
     assert device.id == "4D9F3081C75E"
     assert device.name == "Compteur"
@@ -94,7 +103,7 @@ async def test_get_devices_success_return_devices(
     assert device.master_id == "F8DFE101A81C"
     assert device.master_type == "mst"
 
-    device = response[5]
+    device = response[6]
     assert isinstance(device, MasterDevice)
     assert device.id == "F8DFE101A81C"
     assert device.name == "Master"
@@ -103,7 +112,7 @@ async def test_get_devices_success_return_devices(
     assert device.state
     assert device.report_period == 300
 
-    device = response[6]
+    device = response[7]
     assert isinstance(device, VirtualDevice)
     assert device.id == "E9C5FA81C75E"
     assert device.name == "Virtual 1"
@@ -111,7 +120,7 @@ async def test_get_devices_success_return_devices(
     assert device.type_id == "virtual"
     assert not device.state
 
-    device = response[7]
+    device = response[8]
     assert isinstance(device, BatteryDevice)
     assert device.id == "E9BC5FA11C75E"
     assert device.name == "Battery 1"

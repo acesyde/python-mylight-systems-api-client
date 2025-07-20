@@ -11,6 +11,7 @@ from mylightsystems.models import (
     CompositeCounterDevice,
     CounterDevice,
     Device,
+    EthernetDevice,
     MasterDevice,
     RelayDevice,
     VirtualDevice,
@@ -46,9 +47,11 @@ class DeviceFactory:  # pylint: disable=too-few-public-methods
             "gmd": CompositeCounterDevice,
             "vrt": VirtualDevice,
             "mst": MasterDevice,
+            "eth": EthernetDevice,
         }
         self.field_mapping = {
             "deviceTypeId": "type_id",
+            "deviceTypeName": "device_type_name",
             "masterMac": "master_id",
             "masterType": "master_type",
             "reportPeriod": "report_period",

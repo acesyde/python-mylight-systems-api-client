@@ -90,6 +90,7 @@ ignore = [
     "BLE001",  # broad-exception-caught
     "PLR2004", # magic-value-comparison
     "S101",    # assert
+    "PLR0915", # too-many-statements
 ]
 
 fixable = ["ALL"]

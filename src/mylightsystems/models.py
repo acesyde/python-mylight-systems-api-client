@@ -30,6 +30,7 @@ class Device:
 
     id: str
     name: str
+    device_type_name: str
     type: str
     type_id: str
 
@@ -75,6 +76,14 @@ class VirtualDevice(Device):
     """Represent a virtual."""
 
     state: bool
+
+
+@dataclass
+class EthernetDevice(Device):
+    """Represent an ethernet device."""
+
+    master_id: str
+    master_type: str
 
 
 @dataclass
