@@ -1,6 +1,6 @@
 [project]
 name = "mylightsystems"
-version = "0.3.0"
+version = "0.0.3"
 description = "Asynchronous Python client for MyLight Systems."
 authors = [{ name = "Pierre-Emmanuel Mercier", email = "acesyde@gmail.com" }]
 maintainers = [
