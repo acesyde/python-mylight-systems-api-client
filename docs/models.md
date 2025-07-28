@@ -16,38 +16,38 @@ This document describes all data models used by the MyLightSystems API Client.
     - [Usage](#usage-1)
   - [Device Models](#device-models)
     - [Device](#device)
-    - [Fields](#fields-2)
+      - [Fields](#fields-2)
     - [BatteryDevice](#batterydevice)
-    - [Additional Fields](#additional-fields)
+      - [Additional Fields](#additional-fields)
     - [Usage](#usage-2)
     - [RelayDevice](#relaydevice)
-    - [Additional Fields](#additional-fields-1)
+      - [Additional Fields](#additional-fields-1)
     - [Usage](#usage-3)
     - [CounterDevice](#counterdevice)
-    - [Additional Fields](#additional-fields-2)
+      - [Additional Fields](#additional-fields-2)
     - [CompositeCounterDevice](#compositecounterdevice)
-    - [Additional Fields](#additional-fields-3)
+      - [Additional Fields](#additional-fields-3)
     - [VirtualDevice](#virtualdevice)
-    - [Additional Fields](#additional-fields-4)
+      - [Additional Fields](#additional-fields-4)
     - [EthernetDevice](#ethernetdevice)
-    - [Additional Fields](#additional-fields-5)
+      - [Additional Fields](#additional-fields-5)
     - [MasterDevice](#masterdevice)
-    - [Additional Fields](#additional-fields-6)
+      - [Additional Fields](#additional-fields-6)
   - [Measurement Models](#measurement-models)
     - [Measure](#measure)
-    - [Fields](#fields-3)
+      - [Fields](#fields-3)
     - [Usage](#usage-4)
     - [SensorMeasure](#sensormeasure)
-    - [Fields](#fields-4)
+      - [Fields](#fields-4)
     - [Usage](#usage-5)
   - [State Models](#state-models)
     - [SensorState](#sensorstate)
-    - [Fields](#fields-5)
+      - [Fields](#fields-5)
     - [DeviceState](#devicestate)
-    - [Fields](#fields-6)
+      - [Fields](#fields-6)
     - [Usage](#usage-6)
     - [SwitchState](#switchstate)
-    - [Fields](#fields-7)
+      - [Fields](#fields-7)
     - [Usage](#usage-7)
   - [Type Annotations](#type-annotations)
     - [Example with Type Checking](#example-with-type-checking)
@@ -138,7 +138,7 @@ class Device:
     type_id: str
 ```
 
-### Fields
+#### Fields
 
 | Field              | Type  | Description                                       |
 | ------------------ | ----- | ------------------------------------------------- |
@@ -161,7 +161,7 @@ class BatteryDevice(Device):
     capacity: int
 ```
 
-### Additional Fields
+#### Additional Fields
 
 | Field      | Type   | Description                           |
 | ---------- | ------ | ------------------------------------- |
@@ -191,7 +191,7 @@ class RelayDevice(Device):
     master_type: str
 ```
 
-### Additional Fields
+#### Additional Fields
 
 | Field         | Type   | Description                                  |
 | ------------- | ------ | -------------------------------------------- |
@@ -223,7 +223,7 @@ class CounterDevice(Device):
     master_type: str
 ```
 
-### Additional Fields
+#### Additional Fields
 
 | Field         | Type   | Description                           |
 | ------------- | ------ | ------------------------------------- |
@@ -246,7 +246,7 @@ class CompositeCounterDevice(Device):
     children: dict[str, int]
 ```
 
-### Additional Fields
+#### Additional Fields
 
 | Field         | Type             | Description                                |
 | ------------- | ---------------- | ------------------------------------------ |
@@ -266,7 +266,7 @@ class VirtualDevice(Device):
     state: bool
 ```
 
-### Additional Fields
+#### Additional Fields
 
 | Field   | Type   | Description                  |
 | ------- | ------ | ---------------------------- |
@@ -285,7 +285,7 @@ class EthernetDevice(Device):
     master_type: str
 ```
 
-### Additional Fields
+#### Additional Fields
 
 | Field         | Type  | Description                         |
 | ------------- | ----- | ----------------------------------- |
@@ -305,7 +305,7 @@ class MasterDevice(Device):
     report_period: int
 ```
 
-### Additional Fields
+#### Additional Fields
 
 | Field           | Type   | Description                        |
 | --------------- | ------ | ---------------------------------- |
@@ -328,7 +328,7 @@ class Measure:
     unit: str
 ```
 
-### Fields
+#### Fields
 
 | Field   | Type    | Description                                |
 | ------- | ------- | ------------------------------------------ |
@@ -361,7 +361,7 @@ class SensorMeasure:
     date: datetime
 ```
 
-### Fields
+#### Fields
 
 | Field   | Type          | Description                    |
 | ------- | ------------- | ------------------------------ |
@@ -389,7 +389,7 @@ class SensorState:
     measure: SensorMeasure
 ```
 
-### Fields
+#### Fields
 
 | Field       | Type            | Description                |
 | ----------- | --------------- | -------------------------- |
@@ -411,7 +411,7 @@ class DeviceState:
     sensor_states: list[SensorState]
 ```
 
-### Fields
+#### Fields
 
 | Field           | Type                | Description                           |
 | --------------- | ------------------- | ------------------------------------- |
@@ -444,7 +444,7 @@ class SwitchState:
     state: bool
 ```
 
-### Fields
+#### Fields
 
 | Field   | Type   | Description                                   |
 | ------- | ------ | --------------------------------------------- |
