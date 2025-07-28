@@ -22,6 +22,11 @@ class Profile:
 
     id: int
     grid_type: str
+    tenant: str
+    city: str
+    country: str
+    postal_code: str
+    address: str
 
 
 @dataclass
