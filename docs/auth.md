@@ -104,11 +104,4 @@ try:
     auth = await client.auth("user@example.com", "password")
 except MyLightSystemsUnauthorizedError:
     print("Authentication failed: Unauthorized")
-
-## See Also
-
-- [Get User Profile](get_profile.md) - First step after authentication
-- [Exception Handling](exceptions.md) - Complete error handling guide
-- [Data Models: Auth](models.md#auth) - Auth object reference
-- [Quick Start Guide](README.md#quick-start) - Complete example with authentication
 ```

@@ -201,12 +201,3 @@ except MyLightSystemsConnectionError:
 3. **Verify state**: Check the returned state matches your expectation
 4. **Rate limiting**: Don't switch devices too frequently to avoid system stress
 5. **State monitoring**: Use [`get_states`](get_states.md) to monitor state changes over time
-
-## See Also
-
-- [Get Devices](get_devices.md) - Identify switchable devices
-- [Get Device States](get_states.md) - Monitor switch state changes
-- [Data Models: RelayDevice](models.md#relaydevice) - Switchable device type
-- [Data Models: SwitchState](models.md#switchstate) - Switch result object
-- [Exception: SwitchNotAllowedError](exceptions.md#mylightsystemsswitchnotallowederror) - Switch compatibility info
-- [Advanced Usage: Smart Automation](README.md#smart-device-automation) - Intelligent device control example

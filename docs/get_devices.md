@@ -211,12 +211,4 @@ try:
     devices = await client.get_devices(auth.token)
 except MyLightSystemsConnectionError:
     print("Failed to connect to API")
-
-## See Also
-
-- [Get Device States](get_states.md) - Get real-time device status
-- [Switch Control](switch.md) - Control switchable devices
-- [Get Measures Total](get_measures_total.md) - Get device energy measurements
-- [Data Models: Device Types](models.md#device-models) - All device type references
-- [Exception Handling](exceptions.md) - Error handling patterns
 ```

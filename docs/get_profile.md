@@ -120,11 +120,4 @@ try:
     profile = await client.get_profile(auth.token)
 except MyLightSystemsConnectionError:
     print("Failed to connect to API")
-
-## See Also
-
-- [Authentication](auth.md) - How to get the required token
-- [Get Devices](get_devices.md) - Next step: list user devices
-- [Data Models: Profile](models.md#profile) - Profile object reference
-- [Exception Handling](exceptions.md) - Error handling patterns
 ```

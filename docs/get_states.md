@@ -218,13 +218,4 @@ try:
     states = await client.get_states(auth.token)
 except MyLightSystemsConnectionError:
     print("Failed to connect to API")
-
-## See Also
-
-- [Get Devices](get_devices.md) - Get device information first
-- [Get Measures Total](get_measures_total.md) - Get cumulative energy data
-- [Switch Control](switch.md) - Control device states
-- [Data Models: DeviceState](models.md#devicestate) - DeviceState object reference
-- [Data Models: SensorState](models.md#sensorstate) - SensorState object reference
-- [Advanced Usage: Energy Dashboard](README.md#energy-monitoring-dashboard) - Real-world example
 ```

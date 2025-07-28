@@ -163,12 +163,4 @@ try:
     measures = await client.get_measures_total(auth.token, device_id)
 except MyLightSystemsConnectionError:
     print("Failed to connect to API")
-
-## See Also
-
-- [Get Devices](get_devices.md) - Get device IDs for measure requests
-- [Get Device States](get_states.md) - Get real-time sensor measurements
-- [Data Models: Measure](models.md#measure) - Measure object reference
-- [Exception: MeasuresTotalNotSupportedError](exceptions.md#mylightsystemsmeasurestotalnotsupportederror) - Device compatibility info
-- [Advanced Usage: Battery Status](README.md#track-battery-status) - Example usage pattern
 ```
