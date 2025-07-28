@@ -1,4 +1,4 @@
-"""Tests for get profile."""
+"""Tests for get measures total."""
 
 import pytest
 from aioresponses import aioresponses
@@ -20,66 +20,78 @@ _MEASURES_TOTAL_URL = f"{MOCK_URL}/api/measures/total"
     "status",
     [400, 404, 500],
 )
-async def test_get_measures_total_return_non_2xx_status_code_raise_error(
+async def test_get_measures_total__should_raise_error_when_non_2xx_status_code(
     responses: aioresponses,
     client: MyLightSystemsApiClient,
     status: int,
 ) -> None:
-    """Test status call."""
+    """Test that non-2xx status codes raise MyLightSystemsError."""
+    # Given
     responses.get(
         f"{_MEASURES_TOTAL_URL}?authToken=fake-token&device_id=a",
         status=status,
     )
+
+    # When / Then
     with pytest.raises(MyLightSystemsError):
         await client.get_measures_total(auth_token="fake-token", device_id="a")
 
 
-async def test_get_measures_total_with_bad_token_raise_error(
+async def test_get_measures_total__should_raise_unauthorized_error_when_bad_token(
     responses: aioresponses,
     client: MyLightSystemsApiClient,
 ) -> None:
-    """Test bad token call."""
+    """Test that bad token raises MyLightSystemsUnauthorizedError."""
+    # Given
     responses.get(
         f"{_MEASURES_TOTAL_URL}?authToken=fake-token&device_id=a",
         status=200,
         body=load_fixture("unauthorized.json"),
     )
 
+    # When / Then
     with pytest.raises(MyLightSystemsUnauthorizedError):
         await client.get_measures_total(auth_token="fake-token", device_id="a")
 
 
-async def test_get_measures_total_with_unsupported_device_raise_error(
+async def test_get_measures_total__should_raise_not_supported_error_when_unsupported_device(
     responses: aioresponses,
     client: MyLightSystemsApiClient,
 ) -> None:
-    """Test bad token call."""
+    """Test that unsupported device raises MyLightSystemsMeasuresTotalNotSupportedError."""
+    # Given
     responses.get(
         f"{_MEASURES_TOTAL_URL}?authToken=fake-token&device_id=a",
         status=200,
         body=load_fixture("measures_total_unsupported.json"),
     )
 
+    # When / Then
     with pytest.raises(MyLightSystemsMeasuresTotalNotSupportedError):
         await client.get_measures_total(auth_token="fake-token", device_id="a")
 
 
-async def test_get_measures_total_success_return_measures(
+async def test_get_measures_total__should_return_measures_when_valid_request(
     responses: aioresponses,
     client: MyLightSystemsApiClient,
 ) -> None:
-    """Test get profile call."""
+    """Test that valid request returns measures data."""
+    # Given
     responses.get(
         f"{_MEASURES_TOTAL_URL}?authToken=fake-token&device_id=a",
         status=200,
         body=load_fixture("measures_total.json"),
     )
+
+    # When
     response = await client.get_measures_total(auth_token="fake-token", device_id="a")
+
+    # Then
     assert response is not None
-    assert len(response) == 2
+    assert 2 == len(response)
 
     measure = response[0]
     assert isinstance(measure, Measure)
-    assert measure.type == "power"
-    assert measure.unit == "W"
-    assert measure.value == 97277207.27799994
+    assert "power" == measure.type
+    assert "W" == measure.unit
+    assert 97277207.27799994 == measure.value

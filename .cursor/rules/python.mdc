@@ -1,0 +1,237 @@
+# Python Development Guidelines
+
+This document outlines the Python development standards and practices for the **MyLight Systems API Client** library project.
+
+## Project Overview
+
+This is an **asynchronous Python client library** for the MyLight Systems API, designed to be used by developers to interact with MyLight Systems devices and services.
+
+- **Project Name**: `mylightsystems`
+- **Version**: 0.0.3
+- **License**: MIT
+- **Python Support**: 3.13+ (minimum 3.13, <4.0)
+- **Type**: Async API client library
+- **Purpose**: Provide a clean, async interface to MyLight Systems API
+
+## Package Management with UV
+
+This project uses **UV** as the primary package manager for fast and reliable dependency management.
+
+### Configuration
+- **UV Version**: 0.8.3 (managed via mise)
+- **Python Version**: 3.13 (managed via mise)
+- **Virtual Environment**: Located at `.venv` (auto-managed by mise)
+
+### Dependency Management
+- **Project dependencies**: Defined in `pyproject.toml` under `[project.dependencies]`
+- **Development dependencies**: Defined in `[dependency-groups.dev]`
+- **Lock file**: `uv.lock` tracks exact versions for reproducible builds
+
+### Common UV Commands via Mise
+```bash
+# Setup project and install all dependencies
+mise run project:setup
+
+# Update lock file
+mise run project:update-dependencies
+
+# Add new dependency
+uv add <package-name>
+
+# Add development dependency
+uv add --group dev <package-name>
+```
+
+## Project Layout
+
+### Top-Level Directory Structure
+```
+├── src/                      # Source code directory
+│   └── mylightsystems/       # Main package
+├── tests/                    # Test suite
+├── pyproject.toml           # Project configuration and dependencies
+├── uv.lock                  # Locked dependency versions
+├── mise.toml                # Tool version management and tasks
+├── Makefile                 # Legacy build commands
+└── README.md                # Project documentation
+```
+
+### Source Code Organization
+- **`src/mylightsystems/`**: Main library package
+  - `__init__.py`: Package entry point with public API exports
+  - `client.py`: Main `MyLightSystemsApiClient` class
+  - `models.py`: Data models and classes (Auth, Device, Profile, etc.)
+  - `exceptions.py`: Custom exception classes
+  - `const.py`: Constants and configuration values
+  - `device_factory.py`: Factory for creating device objects
+  - `py.typed`: Type hint marker file
+
+### Test Organization
+- **`tests/`**: Test suite with pytest
+  - Individual test files: `test_*.py` (login, devices, profile, etc.)
+  - `fixtures/`: JSON test data files
+  - `conftest.py`: Shared pytest configuration and fixtures
+
+## Dependencies
+
+### Core Dependencies
+- **`aiohttp>=3.0.0,<4.0.0`**: Async HTTP client for API requests
+- **`yarl>=1.6.0,<2.0.0`**: URL manipulation and validation
+- **`mashumaro>=3.11,<4.0.0`**: Fast serialization/deserialization
+- **`orjson>=3.9.0,<4.0.0`**: High-performance JSON library
+
+### Development Dependencies
+- **`pytest>=8.3.2`**: Testing framework with async support
+- **`pytest-asyncio>=0.23.8`**: Async test support
+- **`pytest-cov>=5.0.0`**: Code coverage reporting
+- **`aioresponses>=0.7.6`**: HTTP mocking for async tests
+- **`ruff>=0.4.0`**: Linting and formatting
+
+## Code Style and Linting with Ruff
+
+### Configuration
+- **Line Length**: 120 characters
+- **Indentation**: 4 spaces
+- **Tool**: Ruff (configured in `pyproject.toml`)
+
+### Enabled Rule Categories
+- **E**: pycodestyle errors
+- **F**: pyflakes (unused imports, variables)
+- **I**: isort (import sorting)
+- **C90**: mccabe (complexity)
+- **N**: pep8-naming (naming conventions)
+- **G**: flake8-logging-format
+- **S**: flake8-bandit (security)
+- **ASYNC**: flake8-async (async/await patterns)
+- **PL**: pylint rules
+
+### Complexity Limits
+- **Max Complexity**: 15 (mccabe)
+- **Max Arguments**: 10 per function
+- **Max Positional Args**: 10 per function
+- **Max Returns**: 10 per function
+
+### Ignored Rules
+- `G004`: f-string interpolation in logging (allowed)
+- `E501`: line-too-long (handled by line-length setting)
+- `S101`: assert statements (allowed in tests)
+- `PLR2004`: magic value comparison (allowed)
+- `BLE001`: broad exception caught (allowed)
+- `RET505`: no-else-return (allowed)
+- `RET507`: no-else-continue (allowed)
+- `UP032`: f-string (allowed)
+- `PLR0915`: too-many-statements (allowed)
+
+### Linting Commands
+```bash
+# Run linting checks
+mise run project:lint
+
+# Auto-fix linting issues
+mise run project:lint-fix
+```
+
+## Development Workflow
+
+### Initial Setup
+```bash
+# Install mise (if not already installed)
+# Then install tools and dependencies
+mise install
+mise run project:setup
+```
+
+### Testing
+```bash
+# Run test suite
+mise run project:tests
+
+# Run with coverage
+mise run project:coverage
+```
+
+### Pre-commit Hooks
+```bash
+# Install pre-commit hooks
+mise run precommit:install
+
+# Run all pre-commit checks
+mise run precommit:run
+```
+
+### Build and Release
+```bash
+# Build distribution packages
+mise run project:build
+```
+
+## Library Architecture
+
+### Main Components
+
+#### MyLightSystemsApiClient
+The core client class providing async methods for API interaction:
+- Authentication management
+- Device discovery and control
+- Profile and state retrieval
+- Error handling and retries
+
+#### Models
+Structured data classes using `mashumaro` for serialization:
+- `Auth`: Authentication credentials
+- `Device`: Device information and capabilities
+- `Profile`: User profile data
+- Various state and measure classes
+
+#### Exception Hierarchy
+Custom exceptions for different error scenarios:
+- `MyLightSystemsError`: Base exception
+- `MyLightSystemsConnectionError`: Network/connectivity issues
+- `MyLightSystemsUnauthorizedError`: Authentication failures
+- `MyLightSystemsInvalidAuthError`: Invalid credentials
+- Device-specific exceptions
+
+## Best Practices
+
+### Async Programming
+- Use `async`/`await` consistently throughout the codebase
+- Proper session management with `aiohttp.ClientSession`
+- Handle timeouts and connection errors gracefully
+- Use `asyncio` patterns for concurrent operations
+
+### Error Handling
+- Use specific exception types over broad catches
+- Implement proper logging with appropriate levels
+- Provide meaningful error messages to library users
+- Handle API rate limiting and retries appropriately
+
+### API Design
+- Keep the public API clean and intuitive
+- Use type hints for all public methods and classes
+- Follow semantic versioning for releases
+- Maintain backward compatibility when possible
+
+### Performance
+- Minimize API calls through efficient data caching
+- Use connection pooling via persistent sessions
+- Implement proper resource cleanup (context managers)
+- Optimize JSON serialization with `orjson`
+
+### Code Organization
+- Keep functions under 15 complexity points
+- Use clear, descriptive names for classes and methods
+- Organize imports using isort (handled by ruff)
+- Maintain clear separation between public and private APIs
+
+### Testing
+- Comprehensive unit test coverage using `pytest`
+- Mock external API calls with `aioresponses`
+- Test both success and error scenarios
+- Use fixtures for common test data
+- Async test support with `pytest-asyncio`
+
+## Type Safety
+- Include `py.typed` marker for type checker support
+- Use type hints throughout the codebase
+- Leverage `typing` module features appropriately
+- Ensure mypy compatibility (if used)

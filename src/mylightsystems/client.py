@@ -123,7 +123,15 @@ class MyLightSystemsApiClient:
             params={"authToken": auth_token},
         )
 
-        return Profile(id=response["id"], grid_type=response["gridType"])
+        return Profile(
+            id=response["id"],
+            grid_type=response["gridType"],
+            tenant=response["tenant"],
+            city=response["city"],
+            country=response["country"],
+            postal_code=response["postalCode"],
+            address=response["address"],
+        )
 
     async def get_devices(self, auth_token: str) -> list[Device]:
         """Get devices."""
