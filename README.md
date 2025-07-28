@@ -55,14 +55,14 @@ if __name__ == "__main__":
 
 The client provides methods to interact with all major MyLight Systems endpoints:
 
-| Method | Description | Documentation |
-|--------|-------------|---------------|
-| `auth(email, password)` | Authenticate and get access token | [📖 Auth](docs/auth.md) |
-| `get_profile(token)` | Get user profile information | [📖 Profile](docs/get_profile.md) |
-| `get_devices(token)` | List all connected devices | [📖 Devices](docs/get_devices.md) |
-| `get_states(token)` | Get real-time device states and sensor data | [📖 States](docs/get_states.md) |
-| `get_measures_total(token, device_id)` | Get total energy measures for a device | [📖 Measures](docs/get_measures_total.md) |
-| `switch(token, device_id, state)` | Control device on/off state | [📖 Switch](docs/switch.md) |
+| Method                                 | Description                                 | Documentation                            |
+| -------------------------------------- | ------------------------------------------- | ---------------------------------------- |
+| `auth(email, password)`                | Authenticate and get access token           | [📖 Auth](docs/auth.md)                   |
+| `get_profile(token)`                   | Get user profile information                | [📖 Profile](docs/get_profile.md)         |
+| `get_devices(token)`                   | List all connected devices                  | [📖 Devices](docs/get_devices.md)         |
+| `get_states(token)`                    | Get real-time device states and sensor data | [📖 States](docs/get_states.md)           |
+| `get_measures_total(token, device_id)` | Get total energy measures for a device      | [📖 Measures](docs/get_measures_total.md) |
+| `switch(token, device_id, state)`      | Control device on/off state                 | [📖 Switch](docs/switch.md)               |
 
 ## Device Types
 
