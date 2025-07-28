@@ -1,4 +1,4 @@
-# Python: MyLight Systems
+# Python: MyLight Systems API Client
 
 [![GitHub Release][releases-shield]][releases]
 [![Python Versions][python-versions-shield]][pypi]
@@ -9,116 +9,176 @@
 [![Build Status][build-shield]][build]
 [![Code Coverage][codecov-shield]][codecov]
 
-Asynchronous Python client for MyLight Systems.
+Asynchronous Python client for the MyLight Systems API, enabling programmatic control and monitoring of MyLight Systems solar energy and home automation devices.
 
-## About
+## Features
 
-This package allows you to fetch data from MyLight Systems.
-
-This source code is based on the [airgradient-python](https://github.com/acesyde/python-mylight-systems-api-client) package.
+🔋 **Device Management** - Control and monitor solar panels, batteries, relays, and sensors
+⚡ **Real-time Data** - Get live power consumption, production, and device states
+🏠 **Home Automation** - Switch devices on/off and automate energy management
+📊 **Energy Monitoring** - Track total energy production, consumption, and efficiency metrics
+🔐 **Secure Authentication** - Token-based API authentication with error handling
+🚀 **Async/Await** - Built for modern Python with full async support
 
 ## Installation
+
+Install from PyPI:
 
 ```bash
 pip install mylightsystems
 ```
 
-## Changelog & Releases
+## Quick Start
 
-This repository keeps a change log using [GitHub's releases][releases]
-functionality. The format of the log is based on
-[Keep a Changelog][keepchangelog].
+```python
+import asyncio
+from mylightsystems.client import MyLightSystemsApiClient
 
-Releases are based on [Semantic Versioning][semver], and use the format
-of `MAJOR.MINOR.PATCH`. In a nutshell, the version will be incremented
-based on the following:
+async def main():
+    async with MyLightSystemsApiClient() as client:
+        # Authenticate
+        auth = await client.auth("your_email@example.com", "your_password")
 
--   `MAJOR`: Incompatible or major changes.
--   `MINOR`: Backwards-compatible new features and enhancements.
--   `PATCH`: Backwards-compatible bugfixes and package updates.
+        # Get user profile
+        profile = await client.get_profile(auth.token)
+        print(f"User: {profile.id} in {profile.city}, {profile.country}")
+
+        # Get all devices
+        devices = await client.get_devices(auth.token)
+        print(f"Found {len(devices)} devices")
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+## API Overview
+
+The client provides methods to interact with all major MyLight Systems endpoints:
+
+| Method                                 | Description                                 | Documentation                            |
+| -------------------------------------- | ------------------------------------------- | ---------------------------------------- |
+| `auth(email, password)`                | Authenticate and get access token           | [📖 Auth](docs/auth.md)                   |
+| `get_profile(token)`                   | Get user profile information                | [📖 Profile](docs/get_profile.md)         |
+| `get_devices(token)`                   | List all connected devices                  | [📖 Devices](docs/get_devices.md)         |
+| `get_states(token)`                    | Get real-time device states and sensor data | [📖 States](docs/get_states.md)           |
+| `get_measures_total(token, device_id)` | Get total energy measures for a device      | [📖 Measures](docs/get_measures_total.md) |
+| `switch(token, device_id, state)`      | Control device on/off state                 | [📖 Switch](docs/switch.md)               |
+
+## Device Types
+
+The library supports all MyLight Systems device types:
+
+- **🏠 Master Device** (`mst`) - Main control unit
+- **🔋 Battery Device** (`bat`) - Energy storage systems
+- **🔌 Relay Device** (`sw`) - Controllable switches and outlets
+- **📊 Counter Device** (`cmp`) - Energy measurement devices
+- **📈 Composite Counter** (`gmd`) - Multi-phase energy meters
+- **💻 Virtual Device** (`vrt`) - Software-defined devices
+- **🌐 Ethernet Device** (`eth`) - Network-connected devices
+
+Each device type has specific properties and capabilities. See the [Device Models](docs/models.md) documentation for complete details.
+
+## Documentation
+
+📚 **[Complete API Documentation](docs/index.md)** - Comprehensive guide with examples and advanced usage patterns
+
+### Quick Links
+- **[Getting Started](docs/index.md#quick-start)** - Complete setup and usage examples
+- **[Advanced Usage](docs/index.md#advanced-usage)** - Energy monitoring, automation, and health monitoring
+- **[Error handling](docs/index.md#error-handling)** - Comprehensive error handling patterns
+- **[Retry Patterns](docs/index.md#retry-and-resilience-patterns)** - Production-ready resilience strategies
+
+### API Reference
+- [Authentication](docs/auth.md) - Login and token management
+- [User Profile](docs/get_profile.md) - Get account information
+- [Device Management](docs/get_devices.md) - List and identify devices
+- [Device States](docs/get_states.md) - Real-time monitoring
+- [Energy Measures](docs/get_measures_total.md) - Total energy data
+- [Device Control](docs/switch.md) - Switch devices on/off
+
+### Reference Guides
+- [Data Models](docs/models.md) - All data structures and fields
+- [Exception Handling](docs/exceptions.md) - Error types and handling patterns
+
+## Use Cases
+
+Perfect for building:
+
+🏠 **Home Energy Management** - Real-time monitoring dashboards and automated energy optimization
+🔌 **IoT Integration** - Home Assistant components, OpenHAB bindings, Node-RED flows
+📊 **Energy Analytics** - Historical analysis, solar forecasting, cost optimization
+🤖 **Smart Automation** - Intelligent device control based on production and consumption
+
+See the [complete documentation](docs/index.md) for detailed examples and implementation patterns.
+
+## Requirements
+
+- Python 3.8+
+- aiohttp
+- Modern async/await support
 
 ## Contributing
 
-This is an active open-source project. We are always open to people who want to
-use the code or contribute to it.
+We welcome contributions! This project uses modern Python development tools:
 
-We've set up a separate document for our
-[contribution guidelines](.github/CONTRIBUTING.md).
+- **[mise](https://mise.jdx.dev/)** for tool management
+- **[uv](https://docs.astral.sh/uv/)** for dependency management
+- **[ruff](https://docs.astral.sh/ruff/)** for linting and formatting
+- **[pre-commit](https://pre-commit.com/)** for automated checks
 
-Thank you for being involved! :heart_eyes:
-
-## Setting up development environment
-
-This Python project is fully managed using [mise][mise] for tool management and [uv][uv] for dependency management. It also relies on the use of NodeJS for certain checks during development.
-
-You need at least:
-
--   [mise][mise-install] (for tool management)
-
-### Using mise (recommended)
-
-To install all tools and set up the project:
+### Development Setup
 
 ```bash
+# Install mise for tool management
+curl https://mise.run | sh
+
+# Set up the project
 mise install
 mise run project:setup
 ```
 
-### Development commands
-
-This project uses [ruff][ruff] for linting and formatting. As this repository uses the [pre-commit][pre-commit] framework, all changes are linted and tested with each commit.
-
-You can run all checks and tests manually using mise tasks:
+### Development Commands
 
 ```bash
+# Run all checks and tests
 mise run precommit:run
-```
 
-To run just the Python tests:
-
-```bash
+# Run tests only
 mise run project:tests
-```
 
-To run linting:
-
-```bash
+# Run linting
 mise run project:lint
-```
 
-To fix linting issues:
-
-```bash
+# Fix linting issues
 mise run project:lint-fix
 ```
 
-## Authors & contributors
+See our [Contributing Guidelines](.github/CONTRIBUTING.md) for detailed information.
 
-The content is by [Pierre-Emmanuel Mercier][acesyde].
+## Authors & Contributors
 
-For a full list of all authors and contributors,
-check [the contributor's page][contributors].
+Created and maintained by [Pierre-Emmanuel Mercier][acesyde].
+
+For a full list of contributors, see [the contributor's page][contributors].
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](.github/LICENSE.md) file for details.
+
+---
+
+**MyLight Systems** is a trademark of MyLight Systems SAS. This project is an unofficial client library and is not affiliated with or endorsed by MyLight Systems SAS.
 
 [build-shield]: https://github.com/acesyde/python-mylight-systems-api-client/actions/workflows/tests.yaml/badge.svg
 [build]: https://github.com/acesyde/python-mylight-systems-api-client/actions
 [codecov-shield]: https://codecov.io/gh/acesyde/python-mylight-systems-api-client/branch/master/graph/badge.svg
 [codecov]: https://codecov.io/gh/acesyde/python-mylight-systems-api-client
-[commits-shield]: https://img.shields.io/github/commit-activity/y/acesyde/python-mylight-systems-api-client.svg
-[commits]: https://github.com/acesyde/python-mylight-systems-api-client/commits/master
 [contributors]: https://github.com/acesyde/python-mylight-systems-api-client/graphs/contributors
 [acesyde]: https://github.com/acesyde
-[keepchangelog]: http://keepachangelog.com/en/1.0.0/
 [license-shield]: https://img.shields.io/github/license/acesyde/python-mylight-systems-api-client.svg
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2025.svg
-[mise]: https://mise.jdx.dev/
-[mise-install]: https://mise.jdx.dev/getting-started.html
-[uv]: https://docs.astral.sh/uv/
-[uv-install]: https://docs.astral.sh/uv/getting-started/installation/
-[ruff]: https://docs.astral.sh/ruff/
-[pre-commit]: https://pre-commit.com/
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-stable-green.svg
 [python-versions-shield]: https://img.shields.io/pypi/pyversions/mylightsystems
 [releases-shield]: https://img.shields.io/github/release/acesyde/python-mylight-systems-api-client.svg
 [releases]: https://github.com/acesyde/python-mylight-systems-api-client/releases
-[semver]: http://semver.org/spec/v2.0.0.html
 [pypi]: https://pypi.org/project/mylightsystems/
