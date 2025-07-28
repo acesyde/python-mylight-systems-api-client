@@ -16,11 +16,11 @@ Changes the switch state of a controllable device. This is typically used for re
 
 ## Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `auth_token` | `str` | Yes | Authentication token obtained from [auth](auth.md) |
-| `device_id` | `str` | Yes | ID of the device to control |
-| `value` | `bool` | Yes | New switch state (`True` = on, `False` = off) |
+| Parameter    | Type   | Required | Description                                        |
+| ------------ | ------ | -------- | -------------------------------------------------- |
+| `auth_token` | `str`  | Yes      | Authentication token obtained from [auth](auth.md) |
+| `device_id`  | `str`  | Yes      | ID of the device to control                        |
+| `value`      | `bool` | Yes      | New switch state (`True` = on, `False` = off)      |
 
 ## Returns
 

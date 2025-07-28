@@ -16,9 +16,9 @@ Fetches all devices associated with the authenticated user's account. Devices ar
 
 ## Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `auth_token` | `str` | Yes | Authentication token obtained from [auth](auth.md) |
+| Parameter    | Type  | Required | Description                                        |
+| ------------ | ----- | -------- | -------------------------------------------------- |
+| `auth_token` | `str` | Yes      | Authentication token obtained from [auth](auth.md) |
 
 ## Returns
 

@@ -16,9 +16,9 @@ Fetches real-time state information for all devices, including their current sta
 
 ## Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `auth_token` | `str` | Yes | Authentication token obtained from [auth](auth.md) |
+| Parameter    | Type  | Required | Description                                        |
+| ------------ | ----- | -------- | -------------------------------------------------- |
+| `auth_token` | `str` | Yes      | Authentication token obtained from [auth](auth.md) |
 
 ## Returns
 

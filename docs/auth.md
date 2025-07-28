@@ -16,10 +16,10 @@ Authenticates a user with their email and password, returning an authentication 
 
 ## Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `email` | `str` | Yes | User's email address |
-| `password` | `str` | Yes | User's password |
+| Parameter  | Type  | Required | Description          |
+| ---------- | ----- | -------- | -------------------- |
+| `email`    | `str` | Yes      | User's email address |
+| `password` | `str` | Yes      | User's password      |
 
 ## Returns
 

@@ -66,8 +66,8 @@ class Auth:
 
 ### Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
+| Field   | Type  | Description                           |
+| ------- | ----- | ------------------------------------- |
 | `token` | `str` | Authentication token for API requests |
 
 ### Usage
@@ -99,15 +99,15 @@ class Profile:
 
 ### Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `id` | `int` | Unique user identifier |
-| `grid_type` | `str` | Electrical grid configuration (e.g., "1 phase", "3 phase") |
-| `tenant` | `str` | Tenant/organization identifier |
-| `city` | `str` | User's city |
-| `country` | `str` | User's country (ISO country code) |
-| `postal_code` | `str` | Postal/ZIP code |
-| `address` | `str` | Street address |
+| Field         | Type  | Description                                                |
+| ------------- | ----- | ---------------------------------------------------------- |
+| `id`          | `int` | Unique user identifier                                     |
+| `grid_type`   | `str` | Electrical grid configuration (e.g., "1 phase", "3 phase") |
+| `tenant`      | `str` | Tenant/organization identifier                             |
+| `city`        | `str` | User's city                                                |
+| `country`     | `str` | User's country (ISO country code)                          |
+| `postal_code` | `str` | Postal/ZIP code                                            |
+| `address`     | `str` | Street address                                             |
 
 ### Usage
 
@@ -140,13 +140,13 @@ class Device:
 
 ### Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `id` | `str` | Unique device identifier (MAC address or similar) |
-| `name` | `str` | Human-readable device name |
-| `device_type_name` | `str` | Localized device type description |
-| `type` | `str` | Device type code (e.g., "mst", "bat", "sw") |
-| `type_id` | `str` | Device type identifier |
+| Field              | Type  | Description                                       |
+| ------------------ | ----- | ------------------------------------------------- |
+| `id`               | `str` | Unique device identifier (MAC address or similar) |
+| `name`             | `str` | Human-readable device name                        |
+| `device_type_name` | `str` | Localized device type description                 |
+| `type`             | `str` | Device type code (e.g., "mst", "bat", "sw")       |
+| `type_id`          | `str` | Device type identifier                            |
 
 ---
 
@@ -163,10 +163,10 @@ class BatteryDevice(Device):
 
 ### Additional Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `state` | `bool` | Current battery state (True = active) |
-| `capacity` | `int` | Battery capacity percentage (0-100) |
+| Field      | Type   | Description                           |
+| ---------- | ------ | ------------------------------------- |
+| `state`    | `bool` | Current battery state (True = active) |
+| `capacity` | `int`  | Battery capacity percentage (0-100)   |
 
 ### Usage
 
@@ -193,11 +193,11 @@ class RelayDevice(Device):
 
 ### Additional Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `state` | `bool` | Current relay state (True = on, False = off) |
-| `master_id` | `str` | ID of the controlling master device |
-| `master_type` | `str` | Type of the master device |
+| Field         | Type   | Description                                  |
+| ------------- | ------ | -------------------------------------------- |
+| `state`       | `bool` | Current relay state (True = on, False = off) |
+| `master_id`   | `str`  | ID of the controlling master device          |
+| `master_type` | `str`  | Type of the master device                    |
 
 ### Usage
 
@@ -225,12 +225,12 @@ class CounterDevice(Device):
 
 ### Additional Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `state` | `bool` | Current counter state (True = active) |
-| `phase` | `int` | Electrical phase number (1, 2, or 3) |
-| `master_id` | `str` | ID of the controlling master device |
-| `master_type` | `str` | Type of the master device |
+| Field         | Type   | Description                           |
+| ------------- | ------ | ------------------------------------- |
+| `state`       | `bool` | Current counter state (True = active) |
+| `phase`       | `int`  | Electrical phase number (1, 2, or 3)  |
+| `master_id`   | `str`  | ID of the controlling master device   |
+| `master_type` | `str`  | Type of the master device             |
 
 ---
 
@@ -248,11 +248,11 @@ class CompositeCounterDevice(Device):
 
 ### Additional Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `master_id` | `str` | ID of the controlling master device |
-| `master_type` | `str` | Type of the master device |
-| `children` | `dict[str, int]` | Child devices mapping (device_id -> phase) |
+| Field         | Type             | Description                                |
+| ------------- | ---------------- | ------------------------------------------ |
+| `master_id`   | `str`            | ID of the controlling master device        |
+| `master_type` | `str`            | Type of the master device                  |
+| `children`    | `dict[str, int]` | Child devices mapping (device_id -> phase) |
 
 ---
 
@@ -268,8 +268,8 @@ class VirtualDevice(Device):
 
 ### Additional Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
+| Field   | Type   | Description                  |
+| ------- | ------ | ---------------------------- |
 | `state` | `bool` | Current virtual device state |
 
 ---
@@ -287,10 +287,10 @@ class EthernetDevice(Device):
 
 ### Additional Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `master_id` | `str` | ID of the controlling master device |
-| `master_type` | `str` | Type of the master device |
+| Field         | Type  | Description                         |
+| ------------- | ----- | ----------------------------------- |
+| `master_id`   | `str` | ID of the controlling master device |
+| `master_type` | `str` | Type of the master device           |
 
 ---
 
@@ -307,10 +307,10 @@ class MasterDevice(Device):
 
 ### Additional Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `state` | `bool` | Current master device state |
-| `report_period` | `int` | Data reporting interval in seconds |
+| Field           | Type   | Description                        |
+| --------------- | ------ | ---------------------------------- |
+| `state`         | `bool` | Current master device state        |
+| `report_period` | `int`  | Data reporting interval in seconds |
 
 ---
 
@@ -330,11 +330,11 @@ class Measure:
 
 ### Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `type` | `str` | Measurement type (e.g., "power", "energy") |
-| `value` | `float` | Measured value |
-| `unit` | `str` | Unit of measurement (e.g., "W", "Ws") |
+| Field   | Type    | Description                                |
+| ------- | ------- | ------------------------------------------ |
+| `type`  | `str`   | Measurement type (e.g., "power", "energy") |
+| `value` | `float` | Measured value                             |
+| `unit`  | `str`   | Unit of measurement (e.g., "W", "Ws")      |
 
 ### Usage
 
@@ -363,12 +363,12 @@ class SensorMeasure:
 
 ### Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `type` | `str \| None` | Measurement type (optional) |
-| `value` | `float` | Measured value |
-| `unit` | `str \| None` | Unit of measurement (optional) |
-| `date` | `datetime` | Timestamp of the measurement |
+| Field   | Type          | Description                    |
+| ------- | ------------- | ------------------------------ |
+| `type`  | `str \| None` | Measurement type (optional)    |
+| `value` | `float`       | Measured value                 |
+| `unit`  | `str \| None` | Unit of measurement (optional) |
+| `date`  | `datetime`    | Timestamp of the measurement   |
 
 ### Usage
 
@@ -391,10 +391,10 @@ class SensorState:
 
 ### Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `sensor_id` | `str` | Unique sensor identifier |
-| `measure` | `SensorMeasure` | Current sensor measurement |
+| Field       | Type            | Description                |
+| ----------- | --------------- | -------------------------- |
+| `sensor_id` | `str`           | Unique sensor identifier   |
+| `measure`   | `SensorMeasure` | Current sensor measurement |
 
 ---
 
@@ -413,12 +413,12 @@ class DeviceState:
 
 ### Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `device_id` | `str` | Device identifier |
-| `report_period` | `int` | Effective reporting period in seconds |
-| `state` | `bool` | Device state (True = on, False = off) |
-| `sensor_states` | `list[SensorState]` | List of sensor readings |
+| Field           | Type                | Description                           |
+| --------------- | ------------------- | ------------------------------------- |
+| `device_id`     | `str`               | Device identifier                     |
+| `report_period` | `int`               | Effective reporting period in seconds |
+| `state`         | `bool`              | Device state (True = on, False = off) |
+| `sensor_states` | `list[SensorState]` | List of sensor readings               |
 
 ### Usage
 
@@ -446,8 +446,8 @@ class SwitchState:
 
 ### Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
+| Field   | Type   | Description                                   |
+| ------- | ------ | --------------------------------------------- |
 | `state` | `bool` | Confirmed device state after switch operation |
 
 ### Usage

@@ -16,9 +16,9 @@ Fetches detailed profile information for the authenticated user, including perso
 
 ## Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `auth_token` | `str` | Yes | Authentication token obtained from [auth](auth.md) |
+| Parameter    | Type  | Required | Description                                        |
+| ------------ | ----- | -------- | -------------------------------------------------- |
+| `auth_token` | `str` | Yes      | Authentication token obtained from [auth](auth.md) |
 
 ## Returns
 

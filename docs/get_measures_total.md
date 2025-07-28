@@ -16,10 +16,10 @@ Fetches cumulative measurements for a specific device. This typically includes t
 
 ## Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `auth_token` | `str` | Yes | Authentication token obtained from [auth](auth.md) |
-| `device_id` | `str` | Yes | ID of the device to get measures for |
+| Parameter    | Type  | Required | Description                                        |
+| ------------ | ----- | -------- | -------------------------------------------------- |
+| `auth_token` | `str` | Yes      | Authentication token obtained from [auth](auth.md) |
+| `device_id`  | `str` | Yes      | ID of the device to get measures for               |
 
 ## Returns
 

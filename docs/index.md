@@ -4,11 +4,11 @@ Welcome to the comprehensive documentation for the MyLightSystems Python API Cli
 
 ## 🚀 Quick Navigation
 
-| Section | Description |
-|---------|-------------|
-| [📋 API Reference](#api-reference) | Detailed endpoint documentation |
-| [🏗️ Data Models](#data-models) | All data structures and types |
-| [⚠️ Error Handling](#error-handling) | Exception types and patterns |
+| Section                             | Description                      |
+| ----------------------------------- | -------------------------------- |
+| [📋 API Reference](#api-reference)   | Detailed endpoint documentation  |
+| [🏗️ Data Models](#data-models)       | All data structures and types    |
+| [⚠️ Error Handling](#error-handling) | Exception types and patterns     |
 | [🔧 Advanced Usage](#advanced-usage) | Real-world examples and patterns |
 
 ---
@@ -88,21 +88,21 @@ client = MyLightSystemsApiClient(
 Complete documentation for all API endpoints:
 
 ### Authentication
-| Endpoint | Description | Documentation |
-|----------|-------------|---------------|
+| Endpoint                | Description                   | Documentation           |
+| ----------------------- | ----------------------------- | ----------------------- |
 | `auth(email, password)` | Login and obtain access token | [📖 Auth Guide](auth.md) |
 
 ### Data Retrieval
-| Endpoint | Description | Documentation |
-|----------|-------------|---------------|
-| `get_profile(token)` | Get user account information | [📖 Profile Guide](get_profile.md) |
-| `get_devices(token)` | List all connected devices | [📖 Devices Guide](get_devices.md) |
-| `get_states(token)` | Get real-time device states | [📖 States Guide](get_states.md) |
+| Endpoint                               | Description                   | Documentation                             |
+| -------------------------------------- | ----------------------------- | ----------------------------------------- |
+| `get_profile(token)`                   | Get user account information  | [📖 Profile Guide](get_profile.md)         |
+| `get_devices(token)`                   | List all connected devices    | [📖 Devices Guide](get_devices.md)         |
+| `get_states(token)`                    | Get real-time device states   | [📖 States Guide](get_states.md)           |
 | `get_measures_total(token, device_id)` | Get total energy measurements | [📖 Measures Guide](get_measures_total.md) |
 
 ### Device Control
-| Endpoint | Description | Documentation |
-|----------|-------------|---------------|
+| Endpoint                          | Description                 | Documentation               |
+| --------------------------------- | --------------------------- | --------------------------- |
 | `switch(token, device_id, state)` | Control device on/off state | [📖 Switch Guide](switch.md) |
 
 ---
