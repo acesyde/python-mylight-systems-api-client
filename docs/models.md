@@ -19,10 +19,10 @@ This document describes all data models used by the MyLightSystems API Client.
       - [Fields](#fields-2)
     - [BatteryDevice](#batterydevice)
       - [Additional Fields](#additional-fields)
-    - [Usage](#usage-2)
+      - [Usage](#usage-2)
     - [RelayDevice](#relaydevice)
       - [Additional Fields](#additional-fields-1)
-    - [Usage](#usage-3)
+      - [Usage](#usage-3)
     - [CounterDevice](#counterdevice)
       - [Additional Fields](#additional-fields-2)
     - [CompositeCounterDevice](#compositecounterdevice)
@@ -36,19 +36,19 @@ This document describes all data models used by the MyLightSystems API Client.
   - [Measurement Models](#measurement-models)
     - [Measure](#measure)
       - [Fields](#fields-3)
-    - [Usage](#usage-4)
+      - [Usage](#usage-4)
     - [SensorMeasure](#sensormeasure)
       - [Fields](#fields-4)
-    - [Usage](#usage-5)
+      - [Usage](#usage-5)
   - [State Models](#state-models)
     - [SensorState](#sensorstate)
       - [Fields](#fields-5)
     - [DeviceState](#devicestate)
       - [Fields](#fields-6)
-    - [Usage](#usage-6)
+      - [Usage](#usage-6)
     - [SwitchState](#switchstate)
       - [Fields](#fields-7)
-    - [Usage](#usage-7)
+      - [Usage](#usage-7)
   - [Type Annotations](#type-annotations)
     - [Example with Type Checking](#example-with-type-checking)
 
@@ -168,7 +168,7 @@ class BatteryDevice(Device):
 | `state`    | `bool` | Current battery state (True = active) |
 | `capacity` | `int`  | Battery capacity percentage (0-100)   |
 
-### Usage
+#### Usage
 
 ```python
 devices = await client.get_devices(auth.token)
@@ -199,7 +199,7 @@ class RelayDevice(Device):
 | `master_id`   | `str`  | ID of the controlling master device          |
 | `master_type` | `str`  | Type of the master device                    |
 
-### Usage
+#### Usage
 
 ```python
 # Control a relay device
@@ -336,7 +336,7 @@ class Measure:
 | `value` | `float` | Measured value                             |
 | `unit`  | `str`   | Unit of measurement (e.g., "W", "Ws")      |
 
-### Usage
+#### Usage
 
 Returned by [`get_measures_total`](get_measures_total.md).
 
@@ -370,7 +370,7 @@ class SensorMeasure:
 | `unit`  | `str \| None` | Unit of measurement (optional) |
 | `date`  | `datetime`    | Timestamp of the measurement   |
 
-### Usage
+#### Usage
 
 Used within `SensorState` objects from [`get_states`](get_states.md).
 
@@ -420,7 +420,7 @@ class DeviceState:
 | `state`         | `bool`              | Device state (True = on, False = off) |
 | `sensor_states` | `list[SensorState]` | List of sensor readings               |
 
-### Usage
+#### Usage
 
 Returned by [`get_states`](get_states.md).
 
@@ -450,7 +450,7 @@ class SwitchState:
 | ------- | ------ | --------------------------------------------- |
 | `state` | `bool` | Confirmed device state after switch operation |
 
-### Usage
+#### Usage
 
 Returned by [`switch`](switch.md).
 
