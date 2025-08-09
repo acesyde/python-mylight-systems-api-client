@@ -28,7 +28,7 @@ async def test_get_measures_total__should_raise_error_when_non_2xx_status_code(
     """Test that non-2xx status codes raise MyLightSystemsError."""
     # Given
     responses.get(
-        f"{_MEASURES_TOTAL_URL}?authToken=fake-token&device_id=a",
+        f"{_MEASURES_TOTAL_URL}?authToken=fake-token&deviceId=a",
         status=status,
     )
 
@@ -44,7 +44,7 @@ async def test_get_measures_total__should_raise_unauthorized_error_when_bad_toke
     """Test that bad token raises MyLightSystemsUnauthorizedError."""
     # Given
     responses.get(
-        f"{_MEASURES_TOTAL_URL}?authToken=fake-token&device_id=a",
+        f"{_MEASURES_TOTAL_URL}?authToken=fake-token&deviceId=a",
         status=200,
         body=load_fixture("unauthorized.json"),
     )
@@ -61,7 +61,7 @@ async def test_get_measures_total__should_raise_not_supported_error_when_unsuppo
     """Test that unsupported device raises MyLightSystemsMeasuresTotalNotSupportedError."""
     # Given
     responses.get(
-        f"{_MEASURES_TOTAL_URL}?authToken=fake-token&device_id=a",
+        f"{_MEASURES_TOTAL_URL}?authToken=fake-token&deviceId=a",
         status=200,
         body=load_fixture("measures_total_unsupported.json"),
     )
@@ -78,7 +78,7 @@ async def test_get_measures_total__should_return_measures_when_valid_request(
     """Test that valid request returns measures data."""
     # Given
     responses.get(
-        f"{_MEASURES_TOTAL_URL}?authToken=fake-token&device_id=a",
+        f"{_MEASURES_TOTAL_URL}?authToken=fake-token&deviceId=a",
         status=200,
         body=load_fixture("measures_total.json"),
     )

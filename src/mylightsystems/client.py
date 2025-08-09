@@ -150,7 +150,7 @@ class MyLightSystemsApiClient:
         """Get measures total."""
         response = await self._request(
             MEASURES_TOTAL_URL,
-            params={"authToken": auth_token, "device_id": device_id},
+            params={"authToken": auth_token, "deviceId": device_id},
         )
 
         if response["status"] == "error" and response["error"] == "device.not.supports.total.measures":
