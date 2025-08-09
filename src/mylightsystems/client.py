@@ -84,6 +84,8 @@ class MyLightSystemsApiClient:
 
                 json_response = await response.json()
 
+                _LOGGER.debug("Response: %s", json_response)
+
                 if json_response["status"] == "error" and json_response["error"] == "not.authorized":
                     raise MyLightSystemsUnauthorizedError
 
@@ -156,7 +158,7 @@ class MyLightSystemsApiClient:
 
         return [
             Measure(type=measure["type"], unit=measure["unit"], value=measure["value"])
-            for measure in response["measure"]["values"]
+            for measure in response.get("measure", {}).get("values", [])
         ]
 
     async def get_states(self, auth_token: str) -> list[DeviceState]:
