@@ -214,7 +214,7 @@ class MyLightSystemsApiClient:
 
         Returns
         -------
-            The AirGradientClient object.
+            The MyLightSystemsApiClient object.
 
         """
         return self
